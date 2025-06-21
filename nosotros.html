@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Orbitron:wght@500;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="imagenes/Logo.png">
+  <link rel="icon" href="imagenes/Logo_CC.png">
 </head>
 <body>
 
@@ -15,9 +15,14 @@
   <div class="top-banner">
     <nav class="top-nav">
       <a href="index.html" class="logo">
-      <img src="imagenes/Logo_CC.png" alt="Logo">
-    </a>
-      <ul>
+        <img src="imagenes/Logo.png" alt="Logo">
+      </a>
+
+      <button id="nav-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul id="nav-menu">
         <li class="dropdown">
           <a href="#">Nosotros <i class="fas fa-caret-down"></i></a>
           <ul class="submenu">
@@ -54,26 +59,47 @@
 </header>
 
   <!-- Secciones en tarjetas -->
-  <section id="info-corporativa" class="seccion-boxes">
-    <div class="card" id="mision">
-      <h2>Misión</h2>
-      <p>Garantizar el bienestar interplanetario a través del Impulso al desarrollo tecnológico por medio de la redistribución de recursos de manera efectiva gracias a la miniaturización de recursos.</p>
-    </div>
+  <section id="info-corporativa" class="carousel-container">
+    <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
+    <div class="carousel">
+      <!-- Slide 1 -->
+      <div class="card slide active">
+        <div class="card-inner">
+          <div class="card-front">
+            <h2>Misión</h2>
+            <p>Garantizar el bienestar interplanetario a través del Impulso al desarrollo tecnológico por medio de la redistribución de recursos de manera efectiva gracias a la miniaturización de recursos.</p>
 
-    <div class="card" id="vision">
-      <h2>Visión</h2>
-      <p>Ser el referente en control de miniaturizacion de la materia y transporte intergalactico.</p>
-    </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="card" id="valores">
-      <h2>Valores</h2>
-      <ul>
-        <li>Innovación científica</li>
-        <li>Responsabilidad universal</li>
-        <li>Exploración e investigación</li>
-        <li>Equidad interplanetaria</li>
-      </ul>
+      <!-- Slide 2 -->
+      <div class="card slide">
+        <div class="card-inner">
+          <div class="card-front">
+            <h2>Visión</h2>
+            <p>Ser el referente en control de miniaturizacion de la materia y transporte intergalactico.</p>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="card slide">
+        <div class="card-inner">
+          <div class="card-front">
+            <h2>Valores</h2>
+            <ul>
+              <li>Innovación científica</li>
+              <li>Responsabilidad universal</li>
+              <li>Exploración e investigación</li>
+              <li>Equidad interplanetaria</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+    <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
   </section>
 
   <!-- Footer -->
@@ -86,6 +112,9 @@
     </div>
     <p>© 2025 Corporación Cápsula. Todos los derechos reservados.</p>
   </footer>
+
+  <script src="js/carrusel.js"></script>
+  <script src="js/menu_movil.js"></script>
 
 </body>
 </html>

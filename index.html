@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Corporación Cápsula</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Orbitron:wght@500;700&display=swap">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="imagenes/Logo.png">
@@ -15,9 +16,14 @@
   <div class="top-banner">
     <nav class="top-nav">
       <a href="index.html" class="logo">
-      <img src="imagenes/Logo_CC.png" alt="Logo">
-    </a>
-      <ul>
+        <img src="imagenes/Logo_CC.png" alt="Logo">
+      </a>
+
+      <button id="nav-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul id="nav-menu">
         <li class="dropdown">
           <a href="#">Nosotros <i class="fas fa-caret-down"></i></a>
           <ul class="submenu">
@@ -37,8 +43,8 @@
         </li>
         <li><a href="#servicios">Nuestros servicios</a></li>
       </ul>
-
     </nav>
+
   </div>
 
   <!-- Banner principal -->
@@ -54,6 +60,7 @@
 </header>
 
   <section id="info-corporativa" class="carousel-container">
+    <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
     <div class="carousel">
       <!-- Slide 1 -->
       <div class="card slide active">
@@ -97,14 +104,15 @@
           <div class="card-back">
             <h3>Especificaciones</h3>
             <ul>
-              <li>Autonomía: 600 km</li>
-              <li>Velocidad máxima: 150 km/h</li>
+              <li>Autonomía: 600 km</li>
+              <li>Velocidad máxima: 150 km/h</li>
               <li>Sistema IoT integrado</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+    <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
   </section>
 
 
@@ -120,39 +128,8 @@
     <p>© 2025 Corporación Cápsula. Todos los derechos reservados.</p>
   </footer>
 
-  <script>
-  const slides = Array.from(document.querySelectorAll('.carousel .slide'));
-  const track = document.querySelector('.carousel');
-  const slideCount = slides.length;
-  let currentIndex = 0;
-
-  function updateSlider() {
-    const shift = -currentIndex * (slides[0].offsetWidth + parseFloat(getComputedStyle(slides[0]).marginRight)*2);
-    track.style.transform = `translateX(${shift}px)`;
-
-    slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slideCount;
-    updateSlider();
-  }
-
-  let timer = setInterval(nextSlide, 4000);
-
-  slides.forEach(slide => {
-    slide.querySelector('.card-inner')
-         .addEventListener('click', e => e.currentTarget.classList.toggle('flipped'));
-  });
-
-  // Inicial
-  updateSlider();
-
-  document.querySelector('.carousel-container')
-          .addEventListener('mouseenter', () => clearInterval(timer));
-  document.querySelector('.carousel-container')
-          .addEventListener('mouseleave', () => timer = setInterval(nextSlide, 4000));
-</script>
-
+  <script src="js/menu_movil.js"></script>
+  <script src="js/carrusel.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
