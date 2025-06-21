@@ -518,6 +518,15 @@ body {
   .top-nav ul > li > a {
     font-size: 1.1rem;
   }
+
+  .slide-video {
+  width: 80%;
+  border-radius: 16px;      /* igual que tus cards */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  display: block;
+  object-fit: contain;
+  }
+  
   .top-nav ul li .submenu li a {
     font-size: 1rem;
     padding: 0.6rem 1rem;
