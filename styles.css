@@ -545,6 +545,15 @@ body {
     display: none;
   }
 
+  .carousel .slide h2 {
+    font-size: 10pt; /* equivalentes a ~13px */
+  }
+  .carousel .slide p,
+  .carousel .slide ul,
+  .carousel .slide li {
+    font-size: 10pt;
+  }
+
   /* Tarjetas full-width */
   .card {
     width: 100%;
