@@ -51,6 +51,32 @@ container.addEventListener('mouseleave', () => {
     }
 });
 
+// — Swipe en móvil —
+let startX = 0;
+let isDragging = false;
+
+track.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    clearInterval(timer); // pausa el autoplay
+});
+
+track.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    const endX = e.changedTouches[0].clientX;
+    const delta = endX - startX;
+    const threshold = container.clientWidth * 0.2; // mínimo 20% del ancho para considerar swipe
+
+    if (delta > threshold) {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length; // swipe a la derecha
+    } else if (delta < -threshold) {
+        currentIndex = (currentIndex + 1) % slides.length; // swipe a la izquierda
+    }
+    updateSlider();
+    isDragging = false;
+    timer = setInterval(nextSlide, 4000); // reanuda autoplay
+});
+
 // Inicializar al cargar y al redimensionar
 window.addEventListener('load', updateSlider);
 window.addEventListener('resize', updateSlider);
