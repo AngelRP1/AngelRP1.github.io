@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nosotros</title>
+  <title>Nuestros Procesos</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Orbitron:wght@500;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
@@ -11,7 +11,7 @@
 </head>
 <body>
 
- <!-- Banner superior -->
+<!-- Banner superior -->
 <div class="top-banner">
   <nav class="top-nav">
     <a href="index.html" class="logo">
@@ -46,54 +46,86 @@
   </nav>
 </div>
 
+
   <!-- Banner principal -->
-<header class="banner-principal">
-  <div class="banner-contenido">
-    <div class="banner-imagen">
-      <img src="imagenes/logo_capsule.png" style="width: 300px;" alt="Logo Corporación Cápsula">
+  <header class="banner-principal">
+    <div class="banner-contenido">
+      <div class="banner-imagen">
+        <img src="imagenes/logo_capsule.png" style="width: 300px;" alt="Logo Corporación Cápsula">
+      </div>
+      <h1>Nuestros Procesos</h1>
+      <p>Excelencia en cada etapa de nuestra operación intergaláctica</p>
+      <a href="#procesos-corporativos" class="btn-banner">Conoce nuestro método</a>
     </div>
-    <h1>Corporación Cápsula</h1>
-    <p>¡El futuro al alcance de un clic!</p>
-    <a href="#info-corporativa" class="btn-banner">Conócenos</a>
-  </div>
-</header>
+  </header>
 
   <!-- Secciones en tarjetas -->
-  <section id="info-corporativa" class="carousel-container">
+  <section id="procesos-corporativos" class="carousel-container">
     <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
     <div class="carousel">
-      <!-- Slide 1 -->
-      <div class="card slide active">
+      <!-- Slide 1 - Planeación -->
+      <div class="card slide active" id="planeacion">
         <div class="card-inner">
           <div class="card-front">
-            <h2>Misión</h2>
-            <p>Garantizar el bienestar interplanetario a través del Impulso al desarrollo tecnológico por medio de la redistribución de recursos de manera efectiva gracias a la miniaturización de recursos.</p>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="card slide">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Visión</h2>
-            <p>Ser el referente en control de miniaturizacion de la materia y transporte intergalactico.</p>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="card slide">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Valores</h2>
+            <h2>Planeación</h2>
+            <p>Nuestro proceso de planeación estratégica intergaláctica garantiza que cada misión cumpla con los más altos estándares:</p>
             <ul>
-              <li>Innovación científica</li>
-              <li>Responsabilidad universal</li>
-              <li>Exploración e investigación</li>
-              <li>Equidad interplanetaria</li>
+              <li>Análisis de rutas espaciales óptimas</li>
+              <li>Evaluación de recursos necesarios para cada viaje</li>
+              <li>Simulaciones cuánticas de posibles escenarios</li>
+              <li>Desarrollo de protocolos de contingencia</li>
+              <li>Coordinación con autoridades planetarias</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 - Organización -->
+      <div class="card slide" id="organizacion">
+        <div class="card-inner">
+          <div class="card-front">
+            <h2>Organización</h2>
+            <p>Estructuramos nuestros recursos para máxima eficiencia en el transporte interplanetario:</p>
+            <ul>
+              <li>Distribución de equipos especializados por sector</li>
+              <li>Optimización de espacios mediante miniaturización</li>
+              <li>Asignación de personal cualificado por área</li>
+              <li>Jerarquía clara con centros de mando automatizados</li>
+              <li>Integración de IA para gestión logística</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 - Dirección -->
+      <div class="card slide" id="direccion">
+        <div class="card-inner">
+          <div class="card-front">
+            <h2>Dirección</h2>
+            <p>Lideramos con tecnología de punta y visión futurista:</p>
+            <ul>
+              <li>Comunicación holográfica en tiempo real</li>
+              <li>Motivación del talento intergaláctico</li>
+              <li>Toma de decisiones basada en inteligencia artificial</li>
+              <li>Protocolos de emergencia automatizados</li>
+              <li>Coordinación con bases en múltiples planetas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 - Control -->
+      <div class="card slide" id="control">
+        <div class="card-inner">
+          <div class="card-front">
+            <h2>Control</h2>
+            <p>Sistemas de monitoreo avanzados para garantizar éxito en cada misión:</p>
+            <ul>
+              <li>Sensores cuánticos de trayectoria</li>
+              <li>Análisis en tiempo real de condiciones espaciales</li>
+              <li>Retroalimentación continua de los sistemas</li>
+              <li>Ajustes automáticos durante el transporte</li>
+              <li>Reportes detallados post-misión</li>
             </ul>
           </div>
         </div>
@@ -101,21 +133,8 @@
     </div>
     <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
   </section>
-  <!-- Información de nosotros -->
-<section id="informacion-nosotros" style="text-align: center; padding: 3rem 1rem;">
-  <h2 style="color: #000000; font-family: 'Orbitron', sans-serif;">Información de nosotros</h2>
-  <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem;">
-    <!-- Imagen de organigrama -->
-    <div style="max-width: 400px;">
-      <img src="imagenes/organigrama.png" alt="Organigrama Corporativo" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" loading="lazy">
-    </div>
-    <!-- Imagen de uniforme -->
-    <div style="max-width: 400px;">
-      <img src="imagenes/uniforme.png" alt="Uniforme Corporativo" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" loading="lazy">
-    </div>
-  </div>
-</section>
 
+  
   <!-- Footer -->
   <footer class="footer">
     <div class="social-links">
