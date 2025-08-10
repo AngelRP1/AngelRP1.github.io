@@ -446,6 +446,14 @@ body {
   object-fit: cover;
 }
 
+.card-front img {
+  display: block;        /* Evita espacios extra de inline-block */
+  margin: 0 auto;        /* Centrado horizontal */
+  width: 80%;            /* Ajusta tamaño relativo al contenedor */
+  height: auto;          /* Mantiene proporción natural */
+  object-fit: cover;     /* Recorta si es necesario sin deformar */
+  border-radius: 12px;   /* Opcional, esquinas redondeadas */
+}
 
 
 .empty-placeholder {
@@ -487,11 +495,86 @@ body {
 
 @media (max-width: 768px) {
   #nav-toggle { display: inline-block; color: white; }
-  .logo { left: 0.5rem; }
+  #nav-menu {
+    position: fixed;
+    top: 100px; /* justo debajo de la barra */
+    right: 0;
+    width: 280px;
+    max-width: 90vw;
+    height: calc(100vh - 100px);
+    background: var(--nav-dark);
+    padding: 1rem;
+    border-radius: 0 0 0 12px;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    display: none; /* por defecto oculto */
+    flex-direction: column;
+    z-index: 1500;
+  }
+
+  #nav-menu.open {
+    display: flex;
+  }
+  .top-nav { justify-content: space-between;}
+  .logo {
+    position: static;
+    transform: none;
+    margin-left: 0.5rem;
+  }
+  /* Menú principal vertical */
+  .top-nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .top-nav ul > li {
+    width: 100%;
+  }
+
+  /* Enlaces con flecha al final */
+  .top-nav ul > li > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    color: white;
+  }
+
+  /* Submenu oculto inicialmente, estilo acorde */
+  .top-nav .submenu {
+    display: none;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* Submenu abierto */
+  .top-nav .dropdown.open > .submenu {
+    display: block;
+  }
+
+  /* Links del submenu */
+  .top-nav .submenu li a {
+    padding: 0.4rem 0;
+    color: #eaf6ff;
+  }
+
+  /* Flechas (usa un botón o span para la flecha) */
+  .dropdown-toggle-arrow {
+    cursor: pointer;
+    font-size: 1rem;
+    user-select: none;
+    transition: transform 0.3s ease;
+  }
+
+  /* Girar flecha si submenu abierto */
+  .dropdown.open > a > .dropdown-toggle-arrow {
+    transform: rotate(180deg);
+  }
   .carousel-btn { display: none; }
   .logo img { width: 60px; }
-  .top-nav ul { gap: 1rem; }
-  .top-nav ul > li > a { font-size: 0.95rem; }
+
   :root { --card-w: 90vw; }
   .card { height: auto; min-height: 320px; padding: 1.25rem; }
   .card-front .media-placeholder { aspect-ratio: 16/9; }
