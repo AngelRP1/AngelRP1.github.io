@@ -497,7 +497,7 @@ body {
   #nav-toggle { display: inline-block; color: white; }
   #nav-menu {
     position: fixed;
-    top: 100px; /* justo debajo de la barra */
+    top: 90px; /* justo debajo de la barra */
     right: 0;
     width: 280px;
     max-width: 90vw;
@@ -584,3 +584,4 @@ body {
 /* optional: hide scrollbars in some browsers for a cleaner look */
 .carousel::-webkit-scrollbar { height: 8px; }
 .carousel::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 6px; }
+
