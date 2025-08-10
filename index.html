@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Corporación Cápsula</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Orbitron:wght@500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2...rat:wght@400;500;700&family=Orbitron:wght@500;700&display=swap">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
@@ -12,11 +12,11 @@
 </head>
 <body>
 
-  <!-- Banner superior -->
+    <!-- Banner superior -->
   <div class="top-banner">
     <nav class="top-nav">
       <a href="index.html" class="logo">
-        <img src="imagenes/Logo_CC.png" alt="Logo">
+        <img src="imagenes/Logo.png" alt="Logo Corporación Cápsula">
       </a>
 
       <button id="nav-toggle" aria-label="Abrir menú">
@@ -25,11 +25,11 @@
 
       <ul id="nav-menu">
         <li class="dropdown">
-          <a href="#">Nosotros <i class="fas fa-caret-down"></i></a>
+          <a href="nosotros.html">Nosotros <i class="fas fa-caret-down"></i></a>
           <ul class="submenu">
-            <li><a href="nosotros.html">Misión</a></li>
-            <li><a href="nosotros.html">Visión</a></li>
-            <li><a href="nosotros.html">Valores</a></li>
+            <li><a href="nosotros.html#mision">Misión</a></li>
+            <li><a href="nosotros.html#vision">Visión</a></li>
+            <li><a href="nosotros.html#valores">Valores</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -45,30 +45,30 @@
         <li><a href="#servicios">Nuestros servicios</a></li>
       </ul>
     </nav>
-
   </div>
 
   <!-- Banner principal -->
-<header class="banner-principal">
-  <div class="banner-contenido">
-    <div class="banner-imagen">
-      <img src="imagenes/logo_capsule.png" style="width: 300px;" alt="Logo Corporación Cápsula">
+  <header class="banner-principal">
+    <div class="banner-contenido">
+      <div class="banner-imagen">
+        <img src="imagenes/logo_capsule.png" style="width: 300px;" alt="Logo Corporación Cápsula">
+      </div>
+      <h1>Corporación Cápsula</h1>
+      <p>¡El futuro al alcance de un clic!</p>
+      <a href="#info-corporativa" class="btn-banner">Conócenos</a>
     </div>
-    <h1>Corporación Cápsula</h1>
-    <p>¡El futuro al alcance de un clic!</p>
-    <a href="#info-corporativa" class="btn-banner">Explorar tecnologías</a>
-  </div>
-</header>
+  </header>
 
+
+  <!-- Sección de slides / carrusel -->
   <section id="info-corporativa" class="carousel-container">
     <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
     <div class="carousel">
-      <!-- Slide 1 -->
-      <div class="card slide active">
+      <!-- Slide 1 (flippable) -->
+      <div class="card slide flippable active">
         <div class="card-inner">
           <div class="card-front">
             <h2>Cápsula Transportadora</h2>
-            <p>Una cápsula avanzada para transportar cualquier carga que imagines: vehículos, maquinaria, equipos y pasajeros. Construida con tecnología de punta, es reutilizable, resistente a la reentrada atmosférica y está equipada con sistemas de soporte vital y módulos de seguridad.</p>
           </div>
           <div class="card-back">
             <h3>Detalles técnicos</h3>
@@ -81,42 +81,37 @@
         </div>
       </div>
 
-      <!-- Slide 2 -->
-      <div class="card slide">
+      <!-- Slide 2 (no flippable) -->
+      <div class="card slide no-flip">
         <div class="card-inner">
           <div class="card-front">
             <h2>Viajes Intergalácticos</h2>
-            <p>En Corporación Cápsula somos pioneros en viajes intergalácticos. Nuestras naves están equipadas con soporte vital autónomo, navegación inteligente y blindaje avanzado; ya ofrecemos transporte seguro y eficiente a través del espacio profundo.</p>
-          </div>
-          <div class="card-back">
-            <h3>Más información</h3>
-            <p>Capacidad de hasta 50 pasajeros, autonomía de 30 años, comunicación cuántica.</p>
           </div>
         </div>
       </div>
 
-      <!-- Slide 3 -->
-      <div class="card slide">
+      <!-- Slide 3 (video en front, flippable si lo deseas) -->
+      <div class="card slide flippable">
         <div class="card-inner">
           <div class="card-front">
             <h2>Vehículos Cápsula Inteligentes</h2>
-            <p>Diseñados para desplegarse al instante: autos y motos compactos con propulsión eléctrica/autónoma. Se guardan en cápsulas modulares y son perfectos para flotas urbanas eficientes, logística de última milla y movilidad en entornos remotos.</p>
+            <!-- Video directamente en el front -->
+              <video class="slide-video" controls muted preload="metadata">
+                <source src="videos/vehiculo.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento <code>video</code>.
+              </video>
           </div>
           <div class="card-back">
-            <video class="slide-video" controls muted>
-              <source src="videos/vehiculo.mp4" type="video/mp4">
-              Tu navegador no soporta el elemento <code>video</code>.
-            </video>
+            <h3>Más datos</h3>
+            <p>Especificaciones, sensores, conectividad y más.</p>
           </div>
         </div>
       </div>
+
     </div>
     <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
   </section>
 
-
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="social-links">
       <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>

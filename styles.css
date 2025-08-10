@@ -1,128 +1,68 @@
-/* === Tu CSS original === */
+/* styles.css - versión corregida */
+
+/* Reset & base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root{
+  --nav-dark: rgba(4,57,92,0.95);
+  --light-bg: #F5F9FF;
+  --text: #123;
+
+  /* ancho objetivo de cada card:
+     mínimo 320px, preferido 70vw, máximo 860px */
+  --card-w: clamp(320px, 70vw, 860px);
+  --card-gap: 3rem;
+}
+
+
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: white;
-  color: var(--text);
-  line-height: 1.6;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #5c8391;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+  background-repeat: repeat;
+  background-size: 40px 40px;
+  background-attachment: fixed;
 }
 
-/* Botón hamburguesa (oculto en escritorio) */
-#nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  position: absolute;
-  right: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1001;
-}
 
-/* Menú principal */
-#nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 3rem;
-}
-#nav-menu li > a {
-  color: white;
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  padding: 0.5rem 0;
-  position: relative;
-  transition: color 0.3s;
-}
-#nav-menu li > a:hover {
-  color: #cacaca;
-}
-#nav-menu li > a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #00BFFF;
-  transition: width 0.3s;
-}
-#nav-menu li > a:hover::after {
-  width: 100%;
-}
-
-/* Submenús idéntico al tuyo */
-#nav-menu .dropdown { position: relative; }
-#nav-menu .dropdown > a i {
-  font-size: 0.8rem;
-  transition: transform 0.3s;
-}
-#nav-menu .dropdown:hover > a i {
-  transform: rotate(180deg);
-}
-#nav-menu .submenu {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 0;
-  background-color: rgba(0,191,255,0.5);
-  backdrop-filter: blur(6px);
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  list-style: none;
-  padding: 0.5rem 0;
-  display: none;
-  min-width: 180px;
-  z-index: 999;
-}
-#nav-menu .dropdown:hover .submenu {
-  display: block;
-}
-#nav-menu .submenu li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: white;
-  font-weight: 500;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-#nav-menu .submenu li a:hover {
-  background-color: rgba(255,255,255,0.1);
-}
-
+/* ------------- Centrado vertical de la barra ------------- */
 .top-banner {
-  background-color: rgb(0, 191, 255, 0.5);
-  backdrop-filter: blur(10px);
-  padding: 2.5rem 2rem;
+  display: flex;            /* hace que su contenido pueda centrarse */
+  align-items: center;      /* centro vertical */
+  justify-content: center;  /* centro horizontal del nav */
+  background-color: var(--nav-dark);
+  backdrop-filter: blur(6px);
+  padding: 0 2rem;          /* mantén solo padding horizontal para no empujar verticalmente */
+  min-height: 100px;        /* altura mínima de la barra */
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
+/* Aseguramos que el nav ocupe toda la altura del banner y centre su contenido */
 .top-nav {
   display: flex;
-  align-items: center;
-  justify-content: center; 
-  position: relative;
+  align-items: center;      /* centro vertical dentro del nav */
+  justify-content: center;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  height: 100%;             /* hace que .top-nav herede la altura del banner */
 }
 
+/* Logo: lo posicionamos con top 50% para centrar verticalmente aun si es absolute */
 .logo {
   position: absolute;
-  left: -5rem;         
+  left: 2rem;               /* ajusta la distancia horizontal del logo (antes tenías -5rem) */
+  top: 50%;
+  transform: translateY(-50%); /* centra verticalmente el elemento absolute */
+  z-index: 1100;
 }
 .logo img {
   display: block;
@@ -130,485 +70,434 @@ body {
   height: auto;
 }
 
-/* Navegación */
+
+/* ------- Dropdown menu (desktop + mobile) ------- */
+
+/* Base: posicionamiento del li y del submenu */
+.top-nav ul { position: relative; }
+.top-nav ul li { position: relative; }
+/* Submenu: mismo color en desktop y mobile */
+.top-nav .submenu {
+  display: none;                    /* oculto por defecto */
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 200px;
+  background: var(--nav-dark);      /* <-- mismo color oscuro que la barra */
+  color: #eaf6ff;                   /* texto claro como en móvil */
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  padding: 0.5rem 0;
+  z-index: 1500;
+}
+
+/* Links dentro del submenu (desktop) */
+.top-nav .submenu li {
+  display: block;
+}
+.top-nav .submenu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #eaf6ff;                   /* texto claro */
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+/* Hover / focus en items del submenu: ligera iluminación */
+.top-nav .submenu li a:hover,
+.top-nav .submenu li a:focus {
+  background: rgba(255,255,255,0.04); /* sutil */
+  color: white;
+}
+
+
+/* Mostrar submenu en hover y con focus (accesibilidad) */
+.top-nav .dropdown:hover > .submenu,
+.top-nav .dropdown:focus-within > .submenu {
+  display: block;
+}
+
+/* Flecha del dropdown (opcional, junto al texto) */
+.top-nav .dropdown > a { position: relative; }
+.top-nav .dropdown > a .fas.fa-caret-down {
+  margin-left: 6px;
+  font-size: 0.85rem;
+}
+
+/* ----- Adaptaciones móviles ----- */
+/* Cuando el menú está en modo móvil (mostrando #nav-toggle), #nav-menu se volverá column */
+@media (max-width: 768px) {
+
+  #nav-menu {
+    display: none;           /* oculto por defecto hasta que se abra por botón */
+    flex-direction: column;
+    gap: 0;
+    background: var(--nav-dark);
+    padding: 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+  }
+
+  #nav-menu.open { display: flex; }
+
+  .top-nav ul > li {
+    width: 100%;
+  }
+
+  .top-nav ul > li > a {
+    color: white;
+    padding: 0.75rem 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Submenu en móvil: estilo vertical y estático dentro del menú */
+  .top-nav .submenu {
+    position: static;
+    display: none;
+    background: transparent;
+    box-shadow: none;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  /* Cuando el li tenga la clase 'open' mostramos su submenu */
+  .top-nav .dropdown.open > .submenu {
+    display: block;
+  }
+
+  .top-nav .submenu li a {
+    color: #eaf6ff; /* claro sobre fondo oscuro */
+    padding: 0.5rem 0;
+  }
+}
+
+#nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+}
+
 .top-nav ul {
   list-style: none;
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
+  align-items: center;
   padding: 0;
+  margin: 0;
 }
 
-/* Enlaces principales */
 .top-nav ul > li > a {
   color: white;
-  display: inline-flex; 
-  align-items: center;  
-  text-decoration: none; 
+  text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
   letter-spacing: 0.5px;
   padding: 0.5rem 0;
-  position: relative;
-  transition: color 0.3s;
+  transition: color 0.25s;
 }
-.top-nav ul > li > a:hover {
-  color: #cacaca;
-}
-.top-nav ul > li > a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #00BFFF;
-  transition: width 0.3s;
-}
-.top-nav ul > li > a:hover::after {
-  width: 100%;
-}
-
-.top-nav ul li.dropdown {
-  position: relative;
-}
-
-.top-nav ul li.dropdown > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-.top-nav ul li.dropdown > a i {
-  font-size: 0.8rem;
-  transition: transform 0.3s;
-}
-.top-nav ul li.dropdown:hover > a i {
-  transform: rotate(180deg);
-}
-
-.top-nav ul li .submenu {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 0;
-  background-color: rgba(0, 191, 255, 0.5);
-  backdrop-filter: blur(6px);
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  list-style: none;
-  padding: 0.5rem 0;
-  display: none;
-  min-width: 180px;
-  z-index: 999;
-}
-
-.top-nav ul li .submenu li a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: white;         
-  font-weight: 500;
-  font-size: 0.9rem;
-  text-decoration: none; 
-  transition: background 0.3s;
-}
-.top-nav ul li .submenu li a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.top-nav ul li.dropdown:hover .submenu {
-  display: block;
-}
+.top-nav ul > li > a:hover { opacity: 0.9; }
 
 .banner-principal {
-  background: linear-gradient(135deg, #00BFFF 0%, #0099CC 100%);
   text-align: center;
   margin-top: -6.5rem;
   padding: 8rem 2rem;
-  position: relative;
-  overflow: hidden;
 }
 
-.banner-principal:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
-}
 
+/* Contenido interno del banner */
 .banner-contenido {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.banner-contenido h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 2px;
   color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 1s ease;
+  text-align: center;
 }
-
+.banner-contenido h1 {
+  font-size: clamp(1.75rem, 3.2vw, 3rem);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
 .banner-contenido p {
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  margin-bottom: 2.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  animation: fadeInUp 1s ease 0.2s forwards;
-  opacity: 0;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  margin-bottom: 1.5rem;
+  color: rgba(255,255,255,0.95);
 }
 
+/* Banner logo dentro del hero (limitamos tamaño para que no estalle) */
+.banner-contenido .banner-imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  z-index: 3;
+}
+.banner-contenido .banner-imagen img {
+  max-width: 220px; /* tamaño controlado */
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Botón del banner */
 .btn-banner {
   display: inline-block;
-  background-color: white;
-  color: #0099CC;
-  padding: 1rem 2.5rem;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 700;
+  background: linear-gradient(90deg, #0b74d1, #004f9e);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
   text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  animation: fadeInUp 1s ease 0.4s forwards;
-  opacity: 0;
-  border: 2px solid transparent;
+  box-shadow: 0 6px 18px rgba(11, 71, 120, 0.18);
 }
 
-.btn-banner:hover {
-  background-color: transparent;
-  color:white;
-  border-color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
+/* -------------------------
+   Secciones / cajas
+   ------------------------- */
 .seccion-boxes {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
   padding: 5rem 2rem;
-  background-color: #F5F9FF;
+  background-color: var(--light-bg);
 }
 
-.card {
-  background-color: white;
-  border-radius: 16px;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  padding: 2.5rem;
-  width: 700px;
-  height: 300px;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-}
+/* -------------------------
+   Carousel / slides
+   ------------------------- */
 
-.card:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, #00BFFF, #0099CC);
-  transition: width 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-.card:hover:before {
-  width: 8px;
-}
-
-.card h2 {
-  color: #0099CC;
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.card h2:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background-color: #00BFFF;
-}
-
-.card p, .card ul {
-  color: #4A5568;
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.card ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.card ul li {
-  margin-bottom: 0.8rem;
-  padding-left: 1.8rem;
-  position: relative;
-}
-
-.card ul li:before {
-  content: '➤';
-  position: absolute;
-  left: 0;
-  color: #00BFFF;
-}
-
-.footer {
-  background: linear-gradient(135deg, #00BFFF 0%, #0099CC 100%);
-  text-align: center;
-  padding: 3rem 2rem;
-  color: white;
-  position: relative;
-}
-
-.footer:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-}
-
-.imagen {
-  width: 100px;
-}
-
-.footer p {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-}
-
-.social-links a {
-  color: white;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  color: #00BFFF;
-  transform: translateY(-3px);
-}
-
-
-/* Contenedor principal */
 .carousel-container {
+  background-color: rgba(245, 249, 255, 0.3); /* blanco con transparencia */
   position: relative;
-  overflow: hidden;       /* recorta los slides externos */
-  max-width: 1200px;
-  margin: 3rem auto 3rem;
+  z-index: 1;
+  padding: 3rem 1rem;
+  overflow: visible;
 }
+
+
+/* patrón DETRÁS del carousel (sutil) */
+.carousel-container:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(210,250,255,0.28) 0 8px, transparent 9px),
+    radial-gradient(circle at 40% 22%, rgba(220,255,200,0.22) 0 8px, transparent 9px);
+  background-repeat: repeat;
+  background-size: 120px 120px;
+  background-position: center top;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.carousel {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: var(--card-gap);
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  /* padding lateral calculado para centrar una card */
+  padding-left: calc((100vw - var(--card-w)) / 2);
+  padding-right: calc((100vw - var(--card-w)) / 2);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  /* snapping nativo (complementario al JS) */
+  scroll-snap-type: x mandatory;
+}
+
+/* clase que el JS pondrá cuando queramos DESHABILITAR scroll/drag por mouse (desktop) */
+.carousel.no-drag {
+  overflow-x: hidden;
+  /* opcional: ocultar la barra en navegadores WebKit si quieres forzar */
+  scrollbar-width: none; /* firefox */
+}
+.carousel.no-drag::-webkit-scrollbar { display: none; }
 
 /* Botones */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.88);
   border: none;
-  font-size: 2rem;
-  padding: 0.2rem 0.6rem;
+  font-size: 1.6rem;
+  padding: 0.25rem 0.6rem;
   cursor: pointer;
-  z-index: 1000;
-  border-radius: 4px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 10;
 }
-.prev-btn { left: 1rem; }
-.next-btn { right: 1rem; }
+.prev-btn { left: 0.5rem; }
+.next-btn { right: 0.5rem; }
 
-/* El track que contiene los slides */
-.carousel {
-  display: flex;
-  gap: 20%;
-  align-items: center;
-  transition: transform 0.6s ease-in-out;
-}
-
-/* Cada slide ocupará el 60% y dejará peek a los lados */
-.carousel .slide {
-  flex: 0 0 60%;
-  margin: 0;
-  display: flex;              /* para centrar card-inner dentro */
-  justify-content: center;
-  align-items: center;
-  backface-visibility: hidden;
-}
-
-/* El slide activo escala un poco */
-.carousel .slide.active {
-  transform: scale(1.05);
-  transition: transform 0.3s;
-}
-
-.carousel .slide .card-inner {
-  height: 100%;
-}
-
-.card-inner {
+.card {
   position: relative;
-  width: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  cursor: pointer;
+  z-index: 3;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  padding: 1.25rem 2.5rem; /* reduzco padding-top para subir el título y dar más espacio a media */
+  flex: 0 0 var(--card-w);
+  width: var(--card-w);
+  height: 440px;
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  overflow: hidden;
+  display: block;
+  vertical-align: top;
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+  scroll-snap-align: center;
 }
 
-.card-front, .card-back {
-  position: absolute;
+
+/* Estructura interna (front/back) */
+.card-inner {
   width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+  -webkit-transition: -webkit-transform 0.6s cubic-bezier(.2,.8,.2,1);
+  will-change: transform;
+}
+
+.card-inner.is-flipped {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
   backface-visibility: hidden;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* Front por defecto (encima) */
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
 }
 
 .card-back {
   transform: rotateY(180deg);
+  z-index: 1;
 }
 
-.card-inner.flipped {
-  transform: rotateY(180deg);
+/* Título de la slide */
+.card-front h2 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  color: #0b2340;
+  margin-top: 0;        /* aseguramos que esté pegado al padding-top reducido */
+  margin-bottom: 0.75rem; /* más separación entre título y media */
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Cuando está flipped, la back se vuelve visible por encima */
+.card-inner.is-flipped .card-back { z-index: 3; }
+
+/* UX: cursor sólo para flippable */
+.card.flippable { cursor: pointer; }
+.card.no-flip { cursor: default; }
+
+/* -------------------------
+   Interacciones / estados
+   ------------------------- */
+.card.active {
+  transform: translateY(-6px) scale(1.02); /* pequeño scale para destacar la central */
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
 }
 
-/* === Ajustes RESPONSIVE === */
-@media (max-width: 768px) {
-  /* Logo más grande */
-  .logo {
-    left: 0.5rem;
-  }
-  .logo img {
-    width: 60px;
-  }
+/* Evita que durante la rotación se muestre un "halo" en algunos navegadores */
+.card, .card-inner, .card-front, .card-back {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
 
-  /* Menú legible */
-  .top-nav ul {
-    gap: 1rem;
-  }
-  .top-nav ul > li > a {
-    font-size: 1.1rem;
-  }
+.card-front .media-placeholder {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+}
 
-  .slide-video {
-  width: 60%;
-  border-radius: 16px;      /* igual que tus cards */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+.card-front video {
   display: block;
-  object-fit: contain;
-  }
-  
-  .top-nav ul li .submenu li a {
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
-  }
+  margin: 0 auto;       /* Centrado horizontal */
+  width: 80%;
+  height: auto;
+  object-fit: cover;
+}
 
-  /* Banner principal: escala la imagen y ajusta padding */
-  .banner-contenido .banner-imagen img {
-    width: 80%;
-    max-width: 200px;
-  }
-  .banner-principal {
-    padding: 6rem 1rem;
-  }
 
-  /* Carrusel a pantalla completa */
-  .carousel .slide {
-    flex: 0 0 100%;
-    margin: 0;
-  }
-  .carousel-container {
-    padding: 0 1rem;
-  }
 
-  .carousel-btn {
-    display: none;
-  }
+.empty-placeholder {
+  color: rgba(191, 9, 9, 0.45);
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  height: 10%;
+  text-align: center;
+}
 
-  .carousel .slide h2 {
-    font-size: 10pt; /* equivalentes a ~13px */
-  }
-  .carousel .slide p,
-  .carousel .slide ul,
-  .carousel .slide li {
-    font-size: 10pt;
-  }
+/* Video en el back (cuando exista) */
+.slide-video {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+}
 
-  /* Tarjetas full-width */
+/* Footer */
+.footer {
+  padding: 2rem;
+  text-align: center;
+  background: #0a2540;
+  color: white;
+}
+
+
+@media (max-width: 990px) {
+  /* reduce el ancho objetivo de la tarjeta en pantallas medianas */
+  :root { --card-w: clamp(300px, 85vw, 700px); }
+
   .card {
-    width: 100%;
-    padding: 2rem;
-  }
-  /* === REGLAS RESPONSIVE PARA EL MENU === */
-
-  /* Mostrar botón hamburguesa */
-  #nav-toggle {
-    display: block;
-  }
-  /* 1) Conserva la transparencia y el blur en la barra */
-  .top-banner,
-  #nav-menu {
-    background-color: rgba(0, 191, 255, 0.5) !important;
-    backdrop-filter: blur(10px) !important;
-  }
-
-  /* 2) Ajusta el menú colapsado para imitar el top-banner */
-  #nav-menu {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    /* ya tiene la transparencia y blur heredados arriba */
-    padding: 1rem 2rem;
-  }
-  #nav-menu.open {
-    display: flex;
-  }
-
-  /* 3) Muestra siempre los submenús (sin hover) */
-  #nav-menu .submenu {
-    display: block !important;
-    position: static !important;
-    background: none !important;
-    backdrop-filter: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin-top: 0.5rem;
-  }
-  /* 4) Ajusta el padding de los items de submenú */
-  #nav-menu .submenu li a {
-    padding: 0.5rem 0 0.5rem 1.5rem;
+    min-height: 320px;
+    height: auto;
+    padding: 1.25rem;
   }
 }
+
+
+@media (max-width: 768px) {
+  #nav-toggle { display: inline-block; color: white; }
+  .logo { left: 0.5rem; }
+  .carousel-btn { display: none; }
+  .logo img { width: 60px; }
+  .top-nav ul { gap: 1rem; }
+  .top-nav ul > li > a { font-size: 0.95rem; }
+  :root { --card-w: 90vw; }
+  .card { height: auto; min-height: 320px; padding: 1.25rem; }
+  .card-front .media-placeholder { aspect-ratio: 16/9; }
+  .banner-contenido h1 { font-size: clamp(1.4rem, 4.5vw, 2rem); }
+}
+
+/* optional: hide scrollbars in some browsers for a cleaner look */
+.carousel::-webkit-scrollbar { height: 8px; }
+.carousel::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 6px; }
