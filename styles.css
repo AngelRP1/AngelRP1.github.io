@@ -480,6 +480,11 @@ body {
   color: white;
 }
 
+.capsula {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 @media (max-width: 990px) {
   /* reduce el ancho objetivo de la tarjeta en pantallas medianas */
@@ -579,9 +584,20 @@ body {
   .card { height: auto; min-height: 320px; padding: 1.25rem; }
   .card-front .media-placeholder { aspect-ratio: 16/9; }
   .banner-contenido h1 { font-size: clamp(1.4rem, 4.5vw, 2rem); }
+  .banner-contenido .banner-imagen img {
+    max-width: 700px;
+  }
+
+  .card-front img {
+    width: 100%; 
+  }
+
+  /* Video dentro de las cards */
+  .card-front video {
+    width: 100%;
+  }
 }
 
 /* optional: hide scrollbars in some browsers for a cleaner look */
 .carousel::-webkit-scrollbar { height: 8px; }
 .carousel::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 6px; }
-
