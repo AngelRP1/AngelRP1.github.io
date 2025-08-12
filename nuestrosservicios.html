@@ -340,139 +340,6 @@
   <script src="js/menu_movil.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Lógica del modal de compra -->
-   
-  <script>
-    const modalEl = document.getElementById('modalCompra');
-    const modal = new bootstrap.Modal(modalEl);
-
-    // Campos
-    const campoProducto = document.getElementById('campoProducto');
-    const campoVariante = document.getElementById('campoVariante');
-    const zonaExtras    = document.getElementById('zonaExtras');
-    const extrasLista   = document.getElementById('extrasLista');
-    const campoCantidad = document.getElementById('campoCantidad');
-    const campoTotal    = document.getElementById('campoTotal');
-
-    const formCompra    = document.getElementById('formCompra');
-    const compraOk      = document.getElementById('compraOk');
-    const resumenCompra = document.getElementById('resumenCompra');
-
-    // Estado actual del producto seleccionado
-    let variantes = [];
-    let extras = [];
-
-    // Abre modal con datos del producto
-    document.querySelectorAll('.btn-comprar').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        // Mostrar panel de formulario, ocultar confirmación
-        formCompra.classList.remove('d-none');
-        compraOk.classList.add('d-none');
-
-        campoProducto.value = btn.dataset.producto || 'Producto';
-
-        try {
-          variantes = JSON.parse(btn.dataset.variantes || '[]');
-          extras    = JSON.parse(btn.dataset.extras || '[]');
-        } catch (_) {
-          variantes = []; extras = [];
-        }
-
-        // Poblar variantes
-        campoVariante.innerHTML = '';
-        variantes.forEach((v, i) => {
-          const opt = document.createElement('option');
-          opt.value = i;
-          opt.textContent = `${v.nombre} — $${v.precio.toLocaleString('es-MX')} MXN`;
-          campoVariante.appendChild(opt);
-        });
-
-        // Extras
-        extrasLista.innerHTML = '';
-        zonaExtras.style.display = extras.length ? 'block' : 'none';
-        extras.forEach((x, i) => {
-          const id = 'extra_' + i;
-          const wrapper = document.createElement('div');
-          wrapper.className = 'form-check';
-          wrapper.innerHTML = `
-            <input class="form-check-input extra-check" type="checkbox" id="${id}" data-precio="${x.precio}">
-            <label class="form-check-label" for="${id}">
-              ${x.nombre} (+$${x.precio.toLocaleString('es-MX')} MXN)
-            </label>`;
-          extrasLista.appendChild(wrapper);
-        });
-
-        // Reset cantidad y total
-        campoCantidad.value = 1;
-        recalcularTotal();
-
-        modal.show();
-      });
-    });
-
-    // Recalcular total cuando cambien campos
-    campoVariante.addEventListener('change', recalcularTotal);
-    campoCantidad.addEventListener('input', recalcularTotal);
-    extrasLista.addEventListener('change', (e) => {
-      if (e.target.classList.contains('extra-check')) recalcularTotal();
-    });
-
-    function recalcularTotal() {
-      let base = 0;
-      const varIdx = parseInt(campoVariante.value ?? 0, 10) || 0;
-      if (variantes[varIdx]) base = variantes[varIdx].precio;
-
-      let extrasSum = 0;
-      document.querySelectorAll('.extra-check:checked').forEach(ch => {
-        extrasSum += Number(ch.dataset.precio || 0);
-      });
-
-      const qty = Math.max(1, parseInt(campoCantidad.value || '1', 10));
-      const total = (base + extrasSum) * qty;
-
-      campoTotal.value = `$${total.toLocaleString('es-MX')} MXN`;
-      return total;
-    }
-
-    // Envío de compra (simulado con confirmación)
-    formCompra.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      // Datos resumen
-      const vIdx = parseInt(campoVariante.value ?? 0, 10) || 0;
-      const varianteTxt = variantes[vIdx] ? variantes[vIdx].nombre : 'Variante';
-
-      const extrasSel = Array.from(document.querySelectorAll('.extra-check:checked'))
-        .map(ch => ch.nextElementSibling.textContent.split(' (+')[0]);
-
-      const total = recalcularTotal();
-
-      const folio = 'CC-' + Math.random().toString(36).toUpperCase().slice(-6);
-
-      resumenCompra.innerHTML = `
-        <strong>Folio:</strong> ${folio}<br>
-        <strong>Producto:</strong> ${campoProducto.value}<br>
-        <strong>Variante:</strong> ${varianteTxt}<br>
-        <strong>Cantidad:</strong> ${campoCantidad.value}<br>
-        <strong>Extras:</strong> ${extrasSel.length ? extrasSel.join(', ') : 'Ninguno'}<br>
-        <strong>Total pagado:</strong> $${total.toLocaleString('es-MX')} MXN<br>
-        <em>Se envió una confirmación a</em> <strong>${document.getElementById('campoEmail').value}</strong>.
-      `;
-
-      // Mostrar panel de confirmación
-      formCompra.classList.add('d-none');
-      compraOk.classList.remove('d-none');
-    });
-
-    // Limpia el formulario al cerrar el modal
-    modalEl.addEventListener('hidden.bs.modal', () => {
-      formCompra.reset();
-      campoTotal.value = '$0 MXN';
-    });
-  </script>
-
   <script>
 (function () {
   const isTouch = matchMedia('(max-width: 768px)').matches;
@@ -545,209 +412,225 @@
 })();
 </script>
 
-  <!-- EmailJS + lógica de envío real -->
+  <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Script unificado: abre modal, rellena, recalcula y envía con EmailJS -->
   <script>
-    // Inicializa EmailJS con la public key proporcionada
-    (function(){
-      if (typeof emailjs !== 'undefined') {
-        emailjs.init('sYg1c4QtCJkvhxWGl'); // public key
-      } else {
-        console.warn("EmailJS SDK no cargado.");
+(function () {
+  // Inicializa EmailJS si está disponible
+  if (typeof emailjs !== 'undefined' && typeof emailjs.init === 'function') {
+    emailjs.init('sYg1c4QtCJkvhxWGl'); // public key
+  } else {
+    console.warn('EmailJS SDK no está disponible. Revisa la carga del CDN o bloqueadores.');
+  }
+
+  // Elementos
+  const modalEl = document.getElementById('modalCompra');
+  const modal = (typeof bootstrap !== 'undefined' && bootstrap.Modal) ? new bootstrap.Modal(modalEl) : null;
+
+  const formCompra = document.getElementById('formCompra');
+  const compraOkEl  = document.getElementById('compraOk');
+  const resumenCompra = document.getElementById('resumenCompra');
+
+  const campoProducto = document.getElementById('campoProducto');
+  const campoVariante = document.getElementById('campoVariante');
+  const zonaExtras    = document.getElementById('zonaExtras');
+  const extrasLista   = document.getElementById('extrasLista');
+  const campoCantidad = document.getElementById('campoCantidad');
+  const campoTotal    = document.getElementById('campoTotal');
+
+  // Estado actual del producto seleccionado
+  let variantes = [];
+  let extras = [];
+
+  // Helpers
+  function generaFolio() {
+    const t = Date.now().toString().slice(-6);
+    const r = Math.floor(Math.random()*900).toString().padStart(3,'0');
+    return `CC-${t}-${r}`;
+  }
+
+  function obtenerExtrasSeleccionados() {
+    return Array.from(document.querySelectorAll('.extra-check:checked'))
+      .map(ch => ch.nextElementSibling ? ch.nextElementSibling.textContent.split(' (+')[0] : '');
+  }
+
+  function recalcularTotal() {
+    let base = 0;
+    const varIdx = parseInt(campoVariante.value ?? 0, 10) || 0;
+    if (variantes[varIdx]) base = variantes[varIdx].precio;
+
+    let extrasSum = 0;
+    document.querySelectorAll('.extra-check:checked').forEach(ch => {
+      extrasSum += Number(ch.dataset.precio || 0);
+    });
+
+    const qty = Math.max(1, parseInt(campoCantidad.value || '1', 10));
+    const total = (base + extrasSum) * qty;
+    campoTotal.value = `$${total.toLocaleString('es-MX')} MXN`;
+    return total;
+  }
+
+  // Construye email HTML (opcional — si lo usas, asegúrate que tu template lo acepte)
+  function buildEmailHTML(params) {
+    return `
+      <div style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size:14px;">
+        <strong>Gracias por tu compra, ${params.to_name}</strong><br/>
+        Folio: ${params.folio}<br/>
+        Producto: ${params.product} — ${params.variant}<br/>
+        Cantidad: ${params.quantity}<br/>
+        Extras: ${params.extras}<br/>
+        Total: ${params.total}
+      </div>
+    `;
+  }
+
+  // Abre modal y pobla datos desde el botón comprar
+  document.querySelectorAll('.btn-comprar').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Reset UI del modal
+      formCompra.classList.remove('d-none');
+      compraOkEl.classList.add('d-none');
+      compraOkEl.innerHTML = '';
+
+      campoProducto.value = btn.dataset.producto || 'Producto';
+
+      try {
+        variantes = JSON.parse(btn.dataset.variantes || '[]');
+        extras    = JSON.parse(btn.dataset.extras || '[]');
+      } catch (err) {
+        variantes = []; extras = [];
       }
-    })();
-  </script>
 
-  <script>
-    const EMAIL_BG = "https://static.wikia.nocookie.net/dragonball/images/a/a0/Logo_de_Capsule_Corp.png/revision/latest?cb=20220526210226&path-prefix=es";
-
-    // Construye HTML del correo (opcional, lo enviamos como variable email_html)
-    function buildEmailHTML(params) {
-      return `
-<!--[if gte mso 9]>
-  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
-    <v:fill type="frame" src="${EMAIL_BG}" color="#f5f5f5" />
-    <v:textbox inset="0,0,0,0">
-<![endif]-->
-
-<div style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size:14px; color:#333; padding:14px 8px; background-color:#f5f5f5; background-image: url('${EMAIL_BG}'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
-  <div style="max-width:600px; margin:auto; background-color: rgba(255,255,255,0.95);">
-    <div style="border-top:6px solid #1E88E5; padding:16px; display:flex; align-items:center; gap:12px;">
-      <img style="height:40px;" src="${EMAIL_BG}" alt="logo" />
-      <div style="font-size:16px;">
-        <strong>Gracias por tu compra, ${params.to_name}</strong>
-        <div style="font-size:12px; color:#666;">Folio: <strong>${params.folio}</strong></div>
-      </div>
-    </div>
-
-    <div style="padding:16px;">
-      <p>Hemos recibido tu pedido. A continuación el resumen:</p>
-
-      <table style="width:100%; border-collapse:collapse; margin-top:12px;">
-        <tr>
-          <td style="padding:8px 4px;">
-            <div style="font-weight:600;">Producto</div>
-            <div style="color:#555; padding-top:6px;">${params.product}</div>
-          </td>
-          <td style="padding:8px 4px;">
-            <div style="font-weight:600;">Variante</div>
-            <div style="color:#555; padding-top:6px;">${params.variant}</div>
-          </td>
-          <td style="padding:8px 4px; text-align:center;">
-            <div style="font-weight:600;">Cantidad</div>
-            <div style="color:#555; padding-top:6px;">${params.quantity}</div>
-          </td>
-          <td style="padding:8px 4px; text-align:right;">
-            <div style="font-weight:600;">Extras</div>
-            <div style="color:#555; padding-top:6px;">${params.extras}</div>
-          </td>
-        </tr>
-      </table>
-
-      <div style="padding-top:16px; border-top:2px solid #eee;"></div>
-
-      <table style="width:100%; margin-top:12px; border-collapse:collapse;">
-        <tr>
-          <td style="width:65%; vertical-align:top;">
-            <div style="font-weight:600;">Dirección de envío</div>
-            <div style="color:#555; padding-top:6px; white-space:pre-wrap;">${params.address}</div>
-          </td>
-          <td style="text-align:right; vertical-align:top;">
-            <div style="font-size:14px; color:#666;">Total</div>
-            <div style="font-size:18px; font-weight:700; margin-top:6px;">${params.total}</div>
-          </td>
-        </tr>
-      </table>
-
-      <div style="padding-top:18px;">
-        <p style="color:#666; margin:0;">Si tienes dudas, contáctanos respondiendo este correo.</p>
-      </div>
-    </div>
-  </div>
-
-  <div style="max-width:600px; margin:auto; padding:10px 0;">
-    <p style="color:#999; font-size:12px; margin:6px 0 0;">Correo de envío: ${params.to_email}<br/>Recibiste este correo porque realizaste un pedido en nuestro sitio.</p>
-  </div>
-</div>
-
-<!--[if gte mso 9]>
-    </v:textbox>
-  </v:rect>
-<![endif]-->
-      `;
-    }
-
-    // Genera folio simple
-    function generaFolio() {
-      const t = Date.now().toString().slice(-6);
-      const r = Math.floor(Math.random()*900).toString().padStart(3,'0');
-      return `CC-${t}-${r}`;
-    }
-
-    // Toma extras seleccionados en modal
-    function obtenerExtrasSeleccionados() {
-      return Array.from(document.querySelectorAll('.extra-check:checked')).map(ch => ch.nextElementSibling.textContent.split(' (+')[0]);
-    }
-
-    // Reemplaza el comportamiento actual de submit para enviar email real
-    (function attachEmailHandler(){
-      const formCompra = document.getElementById('formCompra');
-      const compraOkEl = document.getElementById('compraOk');
-      const resumenCompra = document.getElementById('resumenCompra');
-      const campoProducto = document.getElementById('campoProducto');
-      const campoVariante = document.getElementById('campoVariante');
-      const campoCantidad = document.getElementById('campoCantidad');
-      const campoTotal = document.getElementById('campoTotal');
-
-      formCompra.addEventListener('submit', async function(e){
-        e.preventDefault();
-
-        // obtiene datos actuales
-        const vIdx = parseInt(campoVariante.value ?? 0, 10) || 0;
-        const varianteTxt = (typeof variantes !== 'undefined' && variantes[vIdx]) ? variantes[vIdx].nombre : (campoVariante.options[campoVariante.selectedIndex] && campoVariante.options[campoVariante.selectedIndex].text) || 'Variante';
-
-        const extrasSel = obtenerExtrasSeleccionados();
-        const total = (function(){ // intenta recalcular total como lo hace la UI
-          let base = 0;
-          const varIdx = parseInt(campoVariante.value ?? 0, 10) || 0;
-          if (typeof variantes !== 'undefined' && variantes[varIdx]) base = variantes[varIdx].precio;
-          let extrasSum = 0;
-          document.querySelectorAll('.extra-check:checked').forEach(ch => { extrasSum += Number(ch.dataset.precio || 0); });
-          const qty = Math.max(1, parseInt(campoCantidad.value || '1', 10));
-          return (base + extrasSum) * qty;
-        })();
-
-        const folio = generaFolio();
-
-        const nameValue = (document.getElementById('campoNombre')||{}).value || '';
-        const emailValue = (document.getElementById('campoEmail')||{}).value || '';
-        const addressValue = (document.getElementById('campoDireccion')||{}).value || '';
-        const productValue = campoProducto.value || '';
-        const variantValue = varianteTxt || '';
-        const quantityValue = campoCantidad.value || '1';
-        const extrasText = extrasSel.length ? extrasSel.join(', ') : 'Ninguno';
-        const totalStr = `$${total.toLocaleString('es-MX')} MXN`;
-
-        if (!emailValue || !nameValue) {
-          compraOkEl.classList.remove('d-none');
-          compraOkEl.innerHTML = '<div class="alert alert-danger">Ingresa nombre y correo antes de confirmar.</div>';
-          return;
-        }
-
-        // Actualiza resumen en la UI
-        resumenCompra.innerHTML = `
-          <strong>Folio:</strong> ${folio}<br>
-          <strong>Producto:</strong> ${productValue}<br>
-          <strong>Variante:</strong> ${variantValue}<br>
-          <strong>Cantidad:</strong> ${quantityValue}<br>
-          <strong>Extras:</strong> ${extrasText}<br>
-          <strong>Total pagado:</strong> ${totalStr}<br>
-          <em>Se envió una confirmación a</em> <strong>${emailValue}</strong>.
-        `;
-        formCompra.classList.add('d-none');
-        compraOkEl.classList.remove('d-none');
-
-        // Prepara templateParams para EmailJS
-        const templateParams = {
-          to_email: emailValue,
-          to_name: nameValue,
-          folio: folio,
-          product: productValue,
-          variant: variantValue,
-          quantity: quantityValue,
-          extras: extrasText,
-          total: totalStr,
-          address: addressValue,
-          email_html: buildEmailHTML({
-            to_email: emailValue,
-            to_name: nameValue,
-            folio: folio,
-            product: productValue,
-            variant: variantValue,
-            quantity: quantityValue,
-            extras: extrasText,
-            total: totalStr,
-            address: addressValue
-          })
-        };
-
-        try {
-          // muestra indicador (si existe)
-          const spinner = document.getElementById('spinner');
-          if (spinner) spinner.style.display = 'inline';
-
-          await emailjs.send('service_hzc5yo9', 'template_ee8z8zp', templateParams);
-
-          if (spinner) spinner.style.display = 'none';
-          compraOkEl.innerHTML = '<div class="alert alert-success">Confirmación enviada al correo.</div>';
-        } catch (err) {
-          if (spinner) spinner.style.display = 'none';
-          compraOkEl.innerHTML = '<div class="alert alert-danger">No se pudo enviar la confirmación. Revisa la consola.</div>';
-          console.error('EmailJS error:', err);
-        }
+      // Poblar variantes
+      campoVariante.innerHTML = '';
+      variantes.forEach((v, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = `${v.nombre} — $${v.precio.toLocaleString('es-MX')} MXN`;
+        campoVariante.appendChild(opt);
       });
-    })();
-  </script>
+
+      // Extras
+      extrasLista.innerHTML = '';
+      zonaExtras.style.display = extras.length ? 'block' : 'none';
+      extras.forEach((x, i) => {
+        const id = 'extra_' + i;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'form-check';
+        wrapper.innerHTML = `
+          <input class="form-check-input extra-check" type="checkbox" id="${id}" data-precio="${x.precio}">
+          <label class="form-check-label" for="${id}">
+            ${x.nombre} (+$${x.precio.toLocaleString('es-MX')} MXN)
+          </label>`;
+        extrasLista.appendChild(wrapper);
+      });
+
+      // Reset cantidad y total
+      campoCantidad.value = 1;
+      recalcularTotal();
+
+      if (modal) modal.show();
+    });
+  });
+
+  // Recalcular total cuando cambien campos
+  campoVariante.addEventListener('change', recalcularTotal);
+  campoCantidad.addEventListener('input', recalcularTotal);
+  extrasLista.addEventListener('change', (e) => {
+    if (e.target.classList.contains('extra-check')) recalcularTotal();
+  });
+
+  // Limpia el formulario al cerrar el modal
+  modalEl.addEventListener('hidden.bs.modal', () => {
+    formCompra.reset();
+    campoTotal.value = '$0 MXN';
+    compraOkEl.classList.add('d-none');
+    compraOkEl.innerHTML = '';
+  });
+
+  // Submit único: actualiza UI y manda EmailJS
+  formCompra.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // validaciones básicas
+    const nameValue  = (document.getElementById('campoNombre')||{}).value || '';
+    const emailValue = (document.getElementById('campoEmail')||{}).value || '';
+    const addressValue = (document.getElementById('campoDireccion')||{}).value || '';
+    if (!nameValue || !emailValue) {
+      compraOkEl.classList.remove('d-none');
+      compraOkEl.innerHTML = '<div class="alert alert-danger">Ingresa nombre y correo antes de confirmar.</div>';
+      return;
+    }
+
+    const vIdx = parseInt(campoVariante.value ?? 0, 10) || 0;
+    const varianteTxt = variantes[vIdx] ? variantes[vIdx].nombre : (campoVariante.options[campoVariante.selectedIndex] && campoVariante.options[campoVariante.selectedIndex].text) || 'Variante';
+    const extrasSel = obtenerExtrasSeleccionados();
+    const total = recalcularTotal();
+    const totalStr = `$${total.toLocaleString('es-MX')} MXN`;
+    const folio = generaFolio();
+
+    // Actualizar UI (resumen)
+    resumenCompra.innerHTML = `
+      <strong>Folio:</strong> ${folio}<br>
+      <strong>Producto:</strong> ${campoProducto.value}<br>
+      <strong>Variante:</strong> ${varianteTxt}<br>
+      <strong>Cantidad:</strong> ${campoCantidad.value}<br>
+      <strong>Extras:</strong> ${extrasSel.length ? extrasSel.join(', ') : 'Ninguno'}<br>
+      <strong>Total pagado:</strong> ${totalStr}<br>
+      <em>Se envió una confirmación a</em> <strong>${emailValue}</strong>.
+    `;
+    formCompra.classList.add('d-none');
+    compraOkEl.classList.remove('d-none');
+
+    // Prepara templateParams para EmailJS (ajusta nombres según tu template)
+    const templateParams = {
+      to_email: emailValue,
+      to_name: nameValue,
+      folio: folio,
+      product: campoProducto.value || '',
+      variant: varianteTxt,
+      quantity: campoCantidad.value || '1',
+      extras: extrasSel.length ? extrasSel.join(', ') : 'Ninguno',
+      // En tu template de EmailJS usa {{total}} (sin $) o cámbialo aquí a número.
+      total: totalStr, 
+      address: addressValue,
+      // email_html se envía por si quieres inyectar HTML extra (ver nota en dashboard)
+      email_html: buildEmailHTML({
+        to_email: emailValue, to_name: nameValue, folio, product: campoProducto.value,
+        variant: varianteTxt, quantity: campoCantidad.value, extras: extrasSel.join(', '), total: totalStr, address: addressValue
+      })
+    };
+
+    // DEBUG: ver params en consola antes de enviar
+    console.log('EmailJS params:', templateParams);
+
+    // intenta enviar correo si emailjs existe
+    if (typeof emailjs === 'undefined' || typeof emailjs.send !== 'function') {
+      console.error('EmailJS no está cargado. No se envió correo.');
+      compraOkEl.innerHTML += '<div class="mt-2 alert alert-warning">No se pudo enviar el correo: EmailJS no está cargado.</div>';
+      return;
+    }
+
+    try {
+      const spinner = document.getElementById('spinner');
+      if (spinner) spinner.style.display = 'inline-block';
+
+      await emailjs.send('service_hzc5yo9', 'template_ee8z8zp', templateParams);
+
+      if (spinner) spinner.style.display = 'none';
+      compraOkEl.innerHTML += '<div class="mt-2 alert alert-success">Confirmación enviada al correo.</div>';
+    } catch (err) {
+      console.error('Error EmailJS:', err);
+      compraOkEl.innerHTML += '<div class="mt-2 alert alert-danger">No se pudo enviar la confirmación. Revisa la consola para más detalles.</div>';
+    }
+  });
+
+})();
+</script>
 
 </body>
 </html>
