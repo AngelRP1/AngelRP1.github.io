@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nuestros servicios</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Orbitron:wght@500;700&display=swap">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="imagenes/Logo.png">
+</head>
+
+<body>
+
+  <!-- Banner superior -->
+  <div class="top-banner">
+    <nav class="top-nav">
+      <a href="index.html" class="logo">
+        <img src="imagenes/Logo.png" alt="Logo Corporación Cápsula">
+      </a>
+
+      <button id="nav-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul id="nav-menu">
+        <li class="dropdown">
+          <a href="nosotros.html">Nosotros <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
+          <ul class="submenu">
+            <li><a href="nosotros.html#mision">Misión</a></li>
+            <li><a href="nosotros.html#vision">Visión</a></li>
+            <li><a href="nosotros.html#valores">Valores</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="planeacion.html">Nuestros Procesos <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
+          <ul class="submenu">
+            <li><a href="planeacion.html#planeacion">Planeación</a></li>
+            <li><a href="planeacion.html#organizacion">Organización</a></li>
+            <li><a href="planeacion.html#direccion">Dirección</a></li>
+            <li><a href="planeacion.html#control">Control</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="planeacionrecursos.html">Recursos Planeados <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
+          <ul class="submenu">
+            <li><a href="planeacionrecursos.html#materiales">Recursos Materiales</a></li>
+            <li><a href="planeacionrecursos.html#humanos">Recursos Humanos</a></li>
+            <li><a href="planeacionrecursos.html#tecnologicos">Recursos Tecnológicos</a></li>
+            <li><a href="planeacionrecursos.html#financieros">Recursos Financieros</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="nuestrosservicios.html">Nuestros servicios <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
+          <ul class="submenu">
+            <li><a href="#venta">Venta de productos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Banner principal -->
+  <header class="banner-principal">
+    <div class="banner-contenido">
+      <div class="banner-imagen">
+        <img src="imagenes/logo_capsule.png" style="width: 300px;" alt="Logo Corporación Cápsula">
+      </div>
+      <h1>Nuestros servicios</h1>
+      <p>Soluciones intergalácticas, listas para ti</p>
+      <a href="#venta" class="btn-banner">Venta de productos</a>
+    </div>
+  </header>
+
+  <section id="venta" class="carousel-container">
+  <div class="servicios-intro">
+    <h2 class="text-white">Soluciones listas para despegar</h2>
+    <p>Explora nuestras cápsulas y equipamiento con opciones configurables.</p>
+  </div>
+
+  <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
+  <div class="carousel">
+
+    <!-- 1. Cápsulas vacías -->
+    <div class="card slide flippable active">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-image">
+            <img src="imagenes/capsula.jpg" alt="Cápsula vacía">
+            <span class="price-badge">Desde $2,500 MXN</span>
+          </div>
+          <h2>Cápsulas vacías</h2>
+          <ul class="features">
+            <li><i class="fa-solid fa-check"></i> Modelos Nano y Mega</li>
+            <li><i class="fa-solid fa-check"></i> Sellado hermético opcional</li>
+            <li><i class="fa-solid fa-check"></i> Protección antigravedad</li>
+          </ul>
+        </div>
+        <div class="card-back">
+          <h3>Modelos y precios</h3>
+          <ul>
+            <li><strong>Nano</strong> (hasta 1m³): $2,500 MXN</li>
+            <li><strong>Mega</strong> (hasta 5m³): $5,000 MXN</li>
+            <li>Extras: sellado +$500 | antigravedad +$1,000</li>
+          </ul>
+          <a href="#" class="btn-banner btn-comprar"
+             data-producto='Cápsulas vacías'
+             data-variantes='[{"nombre":"Nano (1m³)","precio":2500},{"nombre":"Mega (5m³)","precio":5000}]'
+             data-extras='[{"nombre":"Sellado hermético","precio":500},{"nombre":"Protección antigravedad","precio":1000}]'>
+             Comprar
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Cápsulas con casas -->
+    <div class="card slide flippable">
+      <div class="card-inner">
+        <div class="card-front">
+          
+          <div class="card-image">
+            <img src="imagenes/casa.jpg" alt="Cápsula con casa">
+            <span class="price-badge">Desde $150,000 MXN</span>
+          </div>
+          <h2>Cápsulas con casas</h2>
+          <ul class="features">
+            <li><i class="fa-solid fa-check"></i> Compacta, Familiar y Villa</li>
+            <li><i class="fa-solid fa-check"></i> Adaptación a climas extremos</li>
+            <li><i class="fa-solid fa-check"></i> Energía solar y reciclaje de agua</li>
+          </ul>
+        </div>
+        <div class="card-back">
+          <h3>Modelos y precios</h3>
+          <ul>
+            <li><strong>Compacta</strong> (1 recámara): $150,000 MXN</li>
+            <li><strong>Familiar</strong> (3 recámaras): $250,000 MXN</li>
+            <li><strong>Villa de lujo</strong> (5 recámaras): $500,000 MXN</li>
+            <li>Extras: climas extremos +$50,000 | solar/agua +$30,000</li>
+          </ul>
+          <a href="#" class="btn-banner btn-comprar"
+             data-producto='Cápsulas con casas'
+             data-variantes='[{"nombre":"Compacta (1R)","precio":150000},{"nombre":"Familiar (3R)","precio":250000},{"nombre":"Villa de lujo (5R)","precio":500000}]'
+             data-extras='[{"nombre":"Adaptación climas extremos","precio":50000},{"nombre":"Energía solar + reciclaje de agua","precio":30000}]'>
+             Comprar
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Cápsulas con vehículos -->
+    <div class="card slide flippable">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-image">
+            <img src="imagenes/vehiculo.jpg" alt="Cápsula con vehículo">
+            <span class="price-badge">Desde $75,000 MXN</span>
+          </div>
+          <h2>Cápsulas con vehículos</h2>
+          <ul class="features">
+            <li><i class="fa-solid fa-check"></i> Moto Hover, Auto AG, Nave ligera</li>
+            <li><i class="fa-solid fa-check"></i> Piloto IA opcional</li>
+            <li><i class="fa-solid fa-check"></i> Blindaje ligero</li>
+          </ul>
+        </div>
+        <div class="card-back">
+          <h3>Modelos y precios</h3>
+          <ul>
+            <li><strong>Moto Hover</strong> (2 plazas): $75,000 MXN</li>
+            <li><strong>Auto Antigravedad</strong> (5 plazas): $200,000 MXN</li>
+            <li><strong>Nave Ligera</strong> (2 plazas): $750,000 MXN</li>
+            <li>Extras: piloto IA +$25,000 | blindaje +$40,000</li>
+          </ul>
+          <a href="#" class="btn-banner btn-comprar"
+             data-producto='Cápsulas con vehículos'
+             data-variantes='[{"nombre":"Moto Hover","precio":75000},{"nombre":"Auto Antigravedad","precio":200000},{"nombre":"Nave Ligera","precio":750000}]'
+             data-extras='[{"nombre":"Piloto IA","precio":25000},{"nombre":"Blindaje ligero","precio":40000}]'>
+             Comprar
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Cápsulas de supervivencia -->
+    <div class="card slide flippable">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-image">
+            <img src="imagenes/viajes.jpg" alt="Cápsula de supervivencia">
+            <span class="price-badge">$80,000 MXN</span>
+          </div>
+          <h2>Cápsulas de supervivencia</h2>
+          <ul class="features">
+            <li><i class="fa-solid fa-check"></i> Tienda presurizada + traje adaptable</li>
+            <li><i class="fa-solid fa-check"></i> Purificador aire/agua y raciones 1 mes</li>
+            <li><i class="fa-solid fa-check"></i> Kit médico intergaláctico</li>
+          </ul>
+        </div>
+        <div class="card-back">
+          <h3>Incluye</h3>
+          <ul>
+            <li>Tienda presurizada y traje adaptable</li>
+            <li>Purificador de aire/agua y raciones 1 mes</li>
+            <li>Kit médico intergaláctico</li>
+            <li>Extras: dron +$15,000 | lab portátil +$20,000</li>
+          </ul>
+          <a href="#" class="btn-banner btn-comprar"
+             data-producto='Cápsulas de supervivencia'
+             data-variantes='[{"nombre":"Estándar","precio":80000}]'
+             data-extras='[{"nombre":"Dron explorador","precio":15000},{"nombre":"Laboratorio portátil","precio":20000}]'>
+             Comprar
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Merch / Uniforme -->
+    <div class="card slide flippable">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-image">
+            <img src="imagenes/uniforme.png" alt="Merch oficial">
+            <span class="price-badge">Desde $299 MXN</span>
+          </div>
+          <h2>Merch oficial</h2>
+          <ul class="features">
+            <li><i class="fa-solid fa-check"></i> Sudaderas y playeras</li>
+            <li><i class="fa-solid fa-check"></i> Parches y kits temáticos</li>
+            <li><i class="fa-solid fa-check"></i> Descuentos por volumen</li>
+          </ul>
+        </div>
+        <div class="card-back">
+          <h3>Artículos</h3>
+          <ul>
+            <li>Sudaderas, playeras y parches</li>
+            <li>Kits de misión personalizados</li>
+            <li>Descuentos por volumen</li>
+          </ul>
+          <a href="#" class="btn-banner btn-comprar"
+             data-producto='Merch oficial'
+             data-variantes='[{"nombre":"Playera","precio":399},{"nombre":"Sudadera","precio":799},{"nombre":"Kit de parches","precio":299}]'
+             data-extras='[]'>
+             Comprar
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
+</section>
+
+
+  <!-- Modal de compra -->
+  <div class="modal fade" id="modalCompra" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius:16px;">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmar compra</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="formCompra">
+            <div class="mb-2">
+              <label class="form-label">Producto</label>
+              <input type="text" class="form-control" id="campoProducto" readonly>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Variante</label>
+              <select id="campoVariante" class="form-select" required></select>
+            </div>
+
+            <div class="mb-2" id="zonaExtras">
+              <label class="form-label">Extras opcionales</label>
+              <div id="extrasLista" class="d-grid gap-1"></div>
+            </div>
+
+            <div class="row g-2">
+              <div class="col-6">
+                <label class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="campoCantidad" min="1" value="1" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label">Total</label>
+                <input type="text" class="form-control" id="campoTotal" value="$0 MXN" readonly>
+              </div>
+            </div>
+
+            <hr class="my-3"/>
+
+            <div class="mb-2">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="campoNombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" id="campoEmail" placeholder="tucorreo@dominio.com" required>
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Dirección de entrega</label>
+              <input type="text" class="form-control" id="campoDireccion" placeholder="Calle, número, ciudad, CP" required>
+            </div>
+
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="acepto" required>
+              <label class="form-check-label" for="acepto">
+                Acepto términos y condiciones.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Confirmar compra</button>
+          </form>
+
+          <!-- Mensaje de éxito -->
+          <div id="compraOk" class="d-none text-center">
+            <div class="display-6 mb-2">¡Compra realizada!</div>
+            <p id="resumenCompra" class="mb-3"></p>
+            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="social-links">
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p>© 2025 Corporación Cápsula. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/carrusel.js"></script>
+  <script src="js/menu_movil.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Lógica del modal de compra -->
+   
+  <script>
+    const modalEl = document.getElementById('modalCompra');
+    const modal = new bootstrap.Modal(modalEl);
+
+    // Campos
+    const campoProducto = document.getElementById('campoProducto');
+    const campoVariante = document.getElementById('campoVariante');
+    const zonaExtras    = document.getElementById('zonaExtras');
+    const extrasLista   = document.getElementById('extrasLista');
+    const campoCantidad = document.getElementById('campoCantidad');
+    const campoTotal    = document.getElementById('campoTotal');
+
+    const formCompra    = document.getElementById('formCompra');
+    const compraOk      = document.getElementById('compraOk');
+    const resumenCompra = document.getElementById('resumenCompra');
+
+    // Estado actual del producto seleccionado
+    let variantes = [];
+    let extras = [];
+
+    // Abre modal con datos del producto
+    document.querySelectorAll('.btn-comprar').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Mostrar panel de formulario, ocultar confirmación
+        formCompra.classList.remove('d-none');
+        compraOk.classList.add('d-none');
+
+        campoProducto.value = btn.dataset.producto || 'Producto';
+
+        try {
+          variantes = JSON.parse(btn.dataset.variantes || '[]');
+          extras    = JSON.parse(btn.dataset.extras || '[]');
+        } catch (_) {
+          variantes = []; extras = [];
+        }
+
+        // Poblar variantes
+        campoVariante.innerHTML = '';
+        variantes.forEach((v, i) => {
+          const opt = document.createElement('option');
+          opt.value = i;
+          opt.textContent = `${v.nombre} — $${v.precio.toLocaleString('es-MX')} MXN`;
+          campoVariante.appendChild(opt);
+        });
+
+        // Extras
+        extrasLista.innerHTML = '';
+        zonaExtras.style.display = extras.length ? 'block' : 'none';
+        extras.forEach((x, i) => {
+          const id = 'extra_' + i;
+          const wrapper = document.createElement('div');
+          wrapper.className = 'form-check';
+          wrapper.innerHTML = `
+            <input class="form-check-input extra-check" type="checkbox" id="${id}" data-precio="${x.precio}">
+            <label class="form-check-label" for="${id}">
+              ${x.nombre} (+$${x.precio.toLocaleString('es-MX')} MXN)
+            </label>`;
+          extrasLista.appendChild(wrapper);
+        });
+
+        // Reset cantidad y total
+        campoCantidad.value = 1;
+        recalcularTotal();
+
+        modal.show();
+      });
+    });
+
+    // Recalcular total cuando cambien campos
+    campoVariante.addEventListener('change', recalcularTotal);
+    campoCantidad.addEventListener('input', recalcularTotal);
+    extrasLista.addEventListener('change', (e) => {
+      if (e.target.classList.contains('extra-check')) recalcularTotal();
+    });
+
+    function recalcularTotal() {
+      let base = 0;
+      const varIdx = parseInt(campoVariante.value ?? 0, 10) || 0;
+      if (variantes[varIdx]) base = variantes[varIdx].precio;
+
+      let extrasSum = 0;
+      document.querySelectorAll('.extra-check:checked').forEach(ch => {
+        extrasSum += Number(ch.dataset.precio || 0);
+      });
+
+      const qty = Math.max(1, parseInt(campoCantidad.value || '1', 10));
+      const total = (base + extrasSum) * qty;
+
+      campoTotal.value = `$${total.toLocaleString('es-MX')} MXN`;
+      return total;
+    }
+
+    // Envío de compra (simulado con confirmación)
+    formCompra.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Datos resumen
+      const vIdx = parseInt(campoVariante.value ?? 0, 10) || 0;
+      const varianteTxt = variantes[vIdx] ? variantes[vIdx].nombre : 'Variante';
+
+      const extrasSel = Array.from(document.querySelectorAll('.extra-check:checked'))
+        .map(ch => ch.nextElementSibling.textContent.split(' (+')[0]);
+
+      const total = recalcularTotal();
+
+      const folio = 'CC-' + Math.random().toString(36).toUpperCase().slice(-6);
+
+      resumenCompra.innerHTML = `
+        <strong>Folio:</strong> ${folio}<br>
+        <strong>Producto:</strong> ${campoProducto.value}<br>
+        <strong>Variante:</strong> ${varianteTxt}<br>
+        <strong>Cantidad:</strong> ${campoCantidad.value}<br>
+        <strong>Extras:</strong> ${extrasSel.length ? extrasSel.join(', ') : 'Ninguno'}<br>
+        <strong>Total pagado:</strong> $${total.toLocaleString('es-MX')} MXN<br>
+        <em>Se envió una confirmación a</em> <strong>${document.getElementById('campoEmail').value}</strong>.
+      `;
+
+      // Mostrar panel de confirmación
+      formCompra.classList.add('d-none');
+      compraOk.classList.remove('d-none');
+    });
+
+    // Limpia el formulario al cerrar el modal
+    modalEl.addEventListener('hidden.bs.modal', () => {
+      formCompra.reset();
+      campoTotal.value = '$0 MXN';
+    });
+  </script>
+  <script>
+(function () {
+  const isTouch = matchMedia('(max-width: 768px)').matches;
+  if (!isTouch) return;
+
+  const cards = document.querySelectorAll('.card.slide.flippable');
+  const THRESH = 10;          // px de tolerancia de movimiento
+  const MAX_TAP_MS = 300;     // duración máxima para considerar "tap"
+  let lastFlipAt = 0;         // anti-doble flip
+
+  cards.forEach(card => {
+    const inner = card.querySelector('.card-inner');
+    if (!inner) return;
+
+    card.classList.add('touch-flip'); // habilita las reglas CSS móviles
+
+    let startX = 0, startY = 0, moved = false, tStart = 0;
+
+    const onPointerDown = (e) => {
+      if (e.target.closest('.btn-comprar, a, button, select, input, label')) return;
+      startX = e.clientX;
+      startY = e.clientY;
+      moved  = false;
+      tStart = Date.now();
+    };
+
+    const onPointerMove = (e) => {
+      if (Math.abs(e.clientX - startX) > THRESH || Math.abs(e.clientY - startY) > THRESH) {
+        moved = true;
+      }
+    };
+
+    const onPointerUp = (e) => {
+      if (e.target.closest('.btn-comprar, a, button, select, input, label')) return;
+
+      const dt = Date.now() - tStart;
+      // si hubo arrastre o fue largo, no es tap
+      if (moved || dt > MAX_TAP_MS) return;
+
+      // anti-doble disparo (click “fantasma” después del pointerup)
+      const now = Date.now();
+      if (now - lastFlipAt < 350) return;
+      lastFlipAt = now;
+
+      // Evita que algún listener de click arriba vuelva a togglear
+      e.stopPropagation();
+      e.preventDefault();
+
+      inner.classList.toggle('is-flipped');
+    };
+
+    // Manejo de eventos
+    card.addEventListener('pointerdown', onPointerDown, { passive: true });
+    card.addEventListener('pointermove', onPointerMove, { passive: true });
+    card.addEventListener('pointerup',   onPointerUp,   { passive: false });
+
+    // Cancela clics "fantasma" dentro de la card que no sean controles
+    card.addEventListener('click', (e) => {
+      if (!e.target.closest('.btn-comprar, a, button, select, input, label')) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    }, true);
+
+    // Evita salto en anchors con href="#"
+    card.querySelectorAll('a[href="#"]').forEach(a => {
+      a.addEventListener('click', ev => ev.preventDefault());
+    });
+  });
+})();
+</script>
+
+
+</body>
+</html>

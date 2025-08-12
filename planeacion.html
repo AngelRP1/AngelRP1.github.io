@@ -12,7 +12,6 @@
 </head>
 <body>
 
-<!-- Banner superior -->
 <div class="top-banner">
   <nav class="top-nav">
     <a href="index.html" class="logo">
@@ -25,7 +24,7 @@
 
     <ul id="nav-menu">
       <li class="dropdown">
-        <a href="nosotros.html">Nosotros <i class="fas fa-caret-down"></i></a>
+        <a href="nosotros.html">Nosotros <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
         <ul class="submenu">
           <li><a href="nosotros.html#mision">Misión</a></li>
           <li><a href="nosotros.html#vision">Visión</a></li>
@@ -33,131 +32,127 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a href="planeacion.html">Nuestros Procesos <i class="fas fa-caret-down"></i></a>
+        <a href="planeacion.html">Nuestros Procesos <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
         <ul class="submenu">
-          <li><a href="planeacion.html#planeacion">Planeación</a></li>
-          <li><a href="planeacion.html#organizacion">Organización</a></li>
-          <li><a href="planeacion.html#direccion">Dirección</a></li>
-          <li><a href="planeacion.html#control">Control</a></li>
+          <li><a href="#planeacion">Planeación</a></li>
+          <li><a href="#organizacion">Organización</a></li>
+          <li><a href="#direccion">Dirección</a></li>
+          <li><a href="#control">Control</a></li>
         </ul>
       </li>
       <li class="dropdown">
-          <a href="planeacionrecursos.html">Recursos Planeados<i class="fas fa-caret-down"></i></a>
+          <a href="planeacionrecursos.html">Recursos Planeados <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
           <ul class="submenu">
             <li><a href="planeacionrecursos.html#materiales">Recursos Materiales</a></li>
             <li><a href="planeacionrecursos.html#humanos">Recursos Humanos</a></li>
             <li><a href="planeacionrecursos.html#tecnologicos">Recursos Tecnológicos</a></li>
             <li><a href="planeacionrecursos.html#financieros">Recursos Financieros</a></li>
           </ul>
-        </li>
-      <li><a href="#servicios">Nuestros servicios</a></li>
+      </li>
+      <li class="dropdown">
+        <a href="nuestrosservicios.html">Nuestros servicios <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
+        <ul class="submenu">
+          <li><a href="nuestrosservicios.html#venta">Venta de productos</a></li>
+        </ul>
+      </li>
     </ul>
   </nav>
 </div>
 
-
-  <!-- Banner principal -->
-  <header class="banner-principal">
-    <div class="banner-contenido">
-      <div class="banner-imagen">
-        <img src="imagenes/logo_capsule.png" style="width: 300px;" alt="Logo Corporación Cápsula">
-      </div>
-      <h1>Nuestros Procesos</h1>
-      <p>Excelencia en cada etapa de nuestra operación intergaláctica</p>
-      <a href="#procesos-corporativos" class="btn-banner">Conoce nuestro método</a>
+<header class="banner-principal">
+  <div class="banner-contenido">
+    <div class="banner-imagen">
+      <img src="imagenes/logo_capsule.png" style="width: 300px;" alt="Logo Corporación Cápsula">
     </div>
-  </header>
+    <h1>Nuestros Procesos</h1>
+    <p>Excelencia en cada etapa de nuestra operación intergaláctica</p>
+    <a href="#procesos-corporativos" class="btn-banner">Conoce nuestro método</a>
+  </div>
+</header>
 
-  <!-- Secciones en tarjetas -->
-  <section id="procesos-corporativos" class="carousel-container">
-    <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
-    <div class="carousel">
-      <!-- Slide 1 - Planeación -->
-      <div class="card slide active" id="planeacion">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Planeación</h2>
-            <p>Nuestro proceso de planeación estratégica intergaláctica garantiza que cada misión cumpla con los más altos estándares:</p>
-            <ul>
-              <li>Análisis de rutas espaciales óptimas</li>
-              <li>Evaluación de recursos necesarios para cada viaje</li>
-              <li>Simulaciones cuánticas de posibles escenarios</li>
-              <li>Desarrollo de protocolos de contingencia</li>
-              <li>Coordinación con autoridades planetarias</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 - Organización -->
-      <div class="card slide" id="organizacion">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Organización</h2>
-            <p>Estructuramos nuestros recursos para máxima eficiencia en el transporte interplanetario:</p>
-            <ul>
-              <li>Distribución de equipos especializados por sector</li>
-              <li>Optimización de espacios mediante miniaturización</li>
-              <li>Asignación de personal cualificado por área</li>
-              <li>Jerarquía clara con centros de mando automatizados</li>
-              <li>Integración de IA para gestión logística</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 - Dirección -->
-      <div class="card slide" id="direccion">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Dirección</h2>
-            <p>Lideramos con tecnología de punta y visión futurista:</p>
-            <ul>
-              <li>Comunicación holográfica en tiempo real</li>
-              <li>Motivación del talento intergaláctico</li>
-              <li>Toma de decisiones basada en inteligencia artificial</li>
-              <li>Protocolos de emergencia automatizados</li>
-              <li>Coordinación con bases en múltiples planetas</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 4 - Control -->
-      <div class="card slide" id="control">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Control</h2>
-            <p>Sistemas de monitoreo avanzados para garantizar éxito en cada misión:</p>
-            <ul>
-              <li>Sensores cuánticos de trayectoria</li>
-              <li>Análisis en tiempo real de condiciones espaciales</li>
-              <li>Retroalimentación continua de los sistemas</li>
-              <li>Ajustes automáticos durante el transporte</li>
-              <li>Reportes detallados post-misión</li>
-            </ul>
-          </div>
+<section id="procesos-corporativos" class="carousel-container">
+  <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
+  <div class="carousel">
+    <!-- (contenido original de tus 4 tarjetas) -->
+    <div class="card slide active" id="planeacion">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Planeación</h2>
+          <p>Nuestro proceso de planeación estratégica intergaláctica garantiza que cada misión cumpla con los más altos estándares:</p>
+          <ul>
+            <li>Análisis de rutas espaciales óptimas</li>
+            <li>Evaluación de recursos necesarios para cada viaje</li>
+            <li>Simulaciones cuánticas de posibles escenarios</li>
+            <li>Desarrollo de protocolos de contingencia</li>
+            <li>Coordinación con autoridades planetarias</li>
+          </ul>
         </div>
       </div>
     </div>
-    <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
-  </section>
 
-  
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="social-links">
-      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <div class="card slide" id="organizacion">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Organización</h2>
+          <p>Estructuramos nuestros recursos para máxima eficiencia en el transporte interplanetario:</p>
+          <ul>
+            <li>Distribución de equipos especializados por sector</li>
+            <li>Optimización de espacios mediante miniaturización</li>
+            <li>Asignación de personal cualificado por área</li>
+            <li>Jerarquía clara con centros de mando automatizados</li>
+            <li>Integración de IA para gestión logística</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <p>© 2025 Corporación Cápsula. Todos los derechos reservados.</p>
-  </footer>
 
-  <script src="js/carrusel.js"></script>
-  <script src="js/menu_movil.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="card slide" id="direccion">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Dirección</h2>
+          <p>Lideramos con tecnología de punta y visión futurista:</p>
+          <ul>
+            <li>Comunicación holográfica en tiempo real</li>
+            <li>Motivación del talento intergaláctico</li>
+            <li>Toma de decisiones basada en inteligencia artificial</li>
+            <li>Protocolos de emergencia automatizados</li>
+            <li>Coordinación con bases en múltiples planetas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
+    <div class="card slide" id="control">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Control</h2>
+          <p>Sistemas de monitoreo avanzados para garantizar éxito en cada misión:</p>
+          <ul>
+            <li>Sensores cuánticos de trayectoria</li>
+            <li>Análisis en tiempo real de condiciones espaciales</li>
+            <li>Retroalimentación continua de los sistemas</li>
+            <li>Ajustes automáticos durante el transporte</li>
+            <li>Reportes detallados post-misión</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
+</section>
+
+<footer class="footer">
+  <div class="social-links">
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p>© 2025 Corporación Cápsula. Todos los derechos reservados.</p>
+</footer>
+
+<script src="js/carrusel.js"></script>
+<script src="js/menu_movil.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <!-- Banner superior -->
+  <!-- Banner superior -->
   <div class="top-banner">
     <nav class="top-nav">
       <a href="index.html" class="logo">
@@ -25,7 +25,7 @@
 
       <ul id="nav-menu">
         <li class="dropdown">
-          <a href="nosotros.html">Nosotros <i class="fas fa-caret-down"></i></a>
+          <a href="nosotros.html">Nosotros <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
           <ul class="submenu">
             <li><a href="nosotros.html#mision">Misión</a></li>
             <li><a href="nosotros.html#vision">Visión</a></li>
@@ -33,7 +33,7 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="planeacion.html">Nuestros Procesos <i class="fas fa-caret-down"></i></a>
+          <a href="planeacion.html">Nuestros Procesos <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
           <ul class="submenu">
             <li><a href="planeacion.html#planeacion">Planeación</a></li>
             <li><a href="planeacion.html#organizacion">Organización</a></li>
@@ -42,7 +42,7 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="planeacionrecursos.html">Recursos Planeados<i class="fas fa-caret-down"></i></a>
+          <a href="planeacionrecursos.html">Recursos Planeados <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
           <ul class="submenu">
             <li><a href="planeacionrecursos.html#materiales">Recursos Materiales</a></li>
             <li><a href="planeacionrecursos.html#humanos">Recursos Humanos</a></li>
@@ -50,7 +50,13 @@
             <li><a href="planeacionrecursos.html#financieros">Recursos Financieros</a></li>
           </ul>
         </li>
-        <li><a href="#servicios">Nuestros servicios</a></li>
+        <!-- NUEVO dropdown -->
+        <li class="dropdown">
+          <a href="nuestrosservicios.html">Nuestros servicios <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
+          <ul class="submenu">
+            <li><a href="nuestrosservicios.html#venta">Venta de productos</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>
@@ -67,8 +73,7 @@
     </div>
   </header>
 
-
-  <!-- Sección de slides / carrusel -->
+  <!-- Carrusel (tal como lo tenías) -->
   <section id="info-corporativa" class="carousel-container">
     <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
     <div class="carousel">
@@ -109,16 +114,14 @@
         </div>
       </div>
 
-      <!-- Slide 3 (video en front, flippable si lo deseas) -->
       <div class="card slide flippable">
         <div class="card-inner">
           <div class="card-front">
             <h2>Vehículos Cápsula Inteligentes</h2>
-            <!-- Video directamente en el front -->
-              <video class="slide-video" controls muted preload="metadata">
-                <source src="videos/vehiculo.mp4" type="video/mp4">
-                Tu navegador no soporta el elemento <code>video</code>.
-              </video>
+            <video class="slide-video" controls muted preload="metadata">
+              <source src="videos/vehiculo.mp4" type="video/mp4">
+              Tu navegador no soporta el elemento <code>video</code>.
+            </video>
           </div>
           <div class="card-back">
             <h3>Más datos</h3>

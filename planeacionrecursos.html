@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Planeación de Recursos</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Orbitron:wght@500;700&display=swap">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  
@@ -12,7 +12,6 @@
 </head>
 <body>
 
- <!-- Banner superior -->
 <div class="top-banner">
   <nav class="top-nav">
     <a href="index.html" class="logo">
@@ -25,7 +24,7 @@
 
     <ul id="nav-menu">
       <li class="dropdown">
-        <a href="nosotros.html">Nosotros <i class="fas fa-caret-down"></i></a>
+        <a href="nosotros.html">Nosotros <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
         <ul class="submenu">
           <li><a href="nosotros.html#mision">Misión</a></li>
           <li><a href="nosotros.html#vision">Visión</a></li>
@@ -33,7 +32,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a href="planeacion.html">Nuestros Procesos <i class="fas fa-caret-down"></i></a>
+        <a href="planeacion.html">Nuestros Procesos <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
         <ul class="submenu">
           <li><a href="planeacion.html#planeacion">Planeación</a></li>
           <li><a href="planeacion.html#organizacion">Organización</a></li>
@@ -42,123 +41,122 @@
         </ul>
       </li>
       <li class="dropdown">
-          <a href="planeacionrecursos.html">Recursos Planeados<i class="fas fa-caret-down"></i></a>
+          <a href="planeacionrecursos.html">Recursos Planeados <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
           <ul class="submenu">
-            <li><a href="planeacionrecursos.html#materiales">Recursos Materiales</a></li>
-            <li><a href="planeacionrecursos.html#humanos">Recursos Humanos</a></li>
-            <li><a href="planeacionrecursos.html#tecnologicos">Recursos Tecnológicos</a></li>
-            <li><a href="planeacionrecursos.html#financieros">Recursos Financieros</a></li>
+            <li><a href="#materiales">Recursos Materiales</a></li>
+            <li><a href="#humanos">Recursos Humanos</a></li>
+            <li><a href="#tecnologicos">Recursos Tecnológicos</a></li>
+            <li><a href="#financieros">Recursos Financieros</a></li>
           </ul>
-        </li>
-      <li><a href="#servicios">Nuestros servicios</a></li>
+      </li>
+      <li class="dropdown">
+        <a href="nuestrosservicios.html">Nuestros servicios <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
+        <ul class="submenu">
+          <li><a href="nuestrosservicios.html#venta">Venta de productos</a></li>
+        </ul>
+      </li>
     </ul>
   </nav>
 </div>
 
-  <!-- Banner principal -->
-  <header class="banner-principal">
-    <div class="banner-contenido">
-      <div class="banner-imagen">
-        <img src="imagenes/logo_capsule.png" style="width: 300px;" alt="Logo Corporación Cápsula">
-      </div>
-      <h1>Planeación de Recursos</h1>
-      <p>Optimización intergaláctica de activos para máxima eficiencia</p>
-      <a href="#recursos-corporativos" class="btn-banner">Explora nuestra metodología</a>
+<header class="banner-principal">
+  <div class="banner-contenido">
+    <div class="banner-imagen">
+      <img src="imagenes/logo_capsule.png" style="width: 300px;" alt="Logo Corporación Cápsula">
     </div>
-  </header>
+    <h1>Planeación de Recursos</h1>
+    <p>Optimización intergaláctica de activos para máxima eficiencia</p>
+    <a href="#recursos-corporativos" class="btn-banner">Explora nuestra metodología</a>
+  </div>
+</header>
 
-  <!-- Secciones en tarjetas -->
-  <section id="recursos-corporativos" class="carousel-container">
-    <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
-    <div class="carousel">
-      <!-- Slide 1 - Recursos Materiales -->
-      <div class="card slide active" id="materiales">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Recursos Materiales</h2>
-            <p>Gestión avanzada de activos físicos para operaciones interplanetarias:</p>
-            <ul>
-              <li>Tecnología de miniaturización de carga</li>
-              <li>Flotas de naves espaciales modulares</li>
-              <li>Sistemas de almacenamiento dimensional</li>
-              <li>Equipos de terraformación portátiles</li>
-              <li>Centros de distribución orbitales</li>
-              <li>Materias primas de alta densidad energética</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 - Recursos Humanos -->
-      <div class="card slide" id="humanos">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Recursos Humanos</h2>
-            <p>El mejor talento galáctico para tus proyectos:</p>
-            <ul>
-              <li>Ingenieros espaciales especializados</li>
-              <li>Pilotos con certificación interestelar</li>
-              <li>Equipos científicos multidisciplinarios</li>
-              <li>Programadores de IA cuántica</li>
-              <li>Especialistas en exobiología</li>
-              <li>Personal con adaptación genética para diferentes planetas</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 - Recursos Tecnológicos -->
-      <div class="card slide" id="tecnologicos">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Recursos Tecnológicos</h2>
-            <p>Soluciones de vanguardia para desafíos intergalácticos:</p>
-            <ul>
-              <li>Motores de curvatura espacio-temporal</li>
-              <li>Sistemas de teleportación cuántica</li>
-              <li>Generadores de campos de protección</li>
-              <li>Inteligencia artificial galáctica</li>
-              <li>Dispositivos de traducción universal</li>
-              <li>Tecnología de camuflaje espacial</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 4 - Recursos Financieros -->
-      <div class="card slide" id="financieros">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Recursos Financieros</h2>
-            <p>Modelos económicos adaptados al comercio interestelar:</p>
-            <ul>
-              <li>Criptomoneda galáctica (Galacoin)</li>
-              <li>Sistemas de intercambio interplanetario</li>
-              <li>Seguros de transporte multidimensional</li>
-              <li>Inversiones en colonias espaciales</li>
-              <li>Fondos para investigación extraterrestre</li>
-              <li>Planes de financiamiento a largo plazo (ciclos estelares)</li>
-            </ul>
-          </div>
+<section id="recursos-corporativos" class="carousel-container">
+  <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
+  <div class="carousel">
+    <!-- (tus 4 tarjetas originales) -->
+    <div class="card slide active" id="materiales">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Recursos Materiales</h2>
+          <p>Gestión avanzada de activos físicos para operaciones interplanetarias:</p>
+          <ul>
+            <li>Tecnología de miniaturización de carga</li>
+            <li>Flotas de naves espaciales modulares</li>
+            <li>Sistemas de almacenamiento dimensional</li>
+            <li>Equipos de terraformación portátiles</li>
+            <li>Centros de distribución orbitales</li>
+            <li>Materias primas de alta densidad energética</li>
+          </ul>
         </div>
       </div>
     </div>
-    <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
-  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="social-links">
-      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <div class="card slide" id="humanos">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Recursos Humanos</h2>
+          <p>El mejor talento galáctico para tus proyectos:</p>
+          <ul>
+            <li>Ingenieros espaciales especializados</li>
+            <li>Pilotos con certificación interestelar</li>
+            <li>Equipos científicos multidisciplinarios</li>
+            <li>Programadores de IA cuántica</li>
+            <li>Especialistas en exobiología</li>
+            <li>Personal con adaptación genética para diferentes planetas</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <p>© 2025 Corporación Cápsula. Todos los derechos reservados.</p>
-  </footer>
 
-  <script src="js/carrusel.js"></script>
-  <script src="js/menu_movil.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="card slide" id="tecnologicos">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Recursos Tecnológicos</h2>
+          <p>Soluciones de vanguardia para desafíos intergalácticos:</p>
+          <ul>
+            <li>Motores de curvatura espacio-temporal</li>
+            <li>Sistemas de teleportación cuántica</li>
+            <li>Generadores de campos de protección</li>
+            <li>Inteligencia artificial galáctica</li>
+            <li>Dispositivos de traducción universal</li>
+            <li>Tecnología de camuflaje espacial</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card slide" id="financieros">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>Recursos Financieros</h2>
+          <p>Modelos económicos adaptados al comercio interestelar:</p>
+          <ul>
+            <li>Criptomoneda galáctica (Galacoin)</li>
+            <li>Sistemas de intercambio interplanetario</li>
+            <li>Seguros de transporte multidimensional</li>
+            <li>Inversiones en colonias espaciales</li>
+            <li>Fondos para investigación extraterrestre</li>
+            <li>Planes de financiamiento a largo plazo (ciclos estelares)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
+</section>
+
+<footer class="footer">
+  <div class="social-links">
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p>© 2025 Corporación Cápsula. Todos los derechos reservados.</p>
+</footer>
+
+<script src="js/carrusel.js"></script>
+<script src="js/menu_movil.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

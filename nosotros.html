@@ -12,7 +12,6 @@
 </head>
 <body>
 
- <!-- Banner superior -->
 <div class="top-banner">
   <nav class="top-nav">
     <a href="index.html" class="logo">
@@ -25,7 +24,7 @@
 
     <ul id="nav-menu">
       <li class="dropdown">
-        <a href="nosotros.html">Nosotros <i class="fas fa-caret-down"></i></a>
+        <a href="nosotros.html">Nosotros <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
         <ul class="submenu">
           <li><a href="nosotros.html#mision">Misión</a></li>
           <li><a href="nosotros.html#vision">Visión</a></li>
@@ -33,7 +32,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a href="planeacion.html">Nuestros Procesos <i class="fas fa-caret-down"></i></a>
+        <a href="planeacion.html">Nuestros Procesos <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
         <ul class="submenu">
           <li><a href="planeacion.html#planeacion">Planeación</a></li>
           <li><a href="planeacion.html#organizacion">Organización</a></li>
@@ -42,20 +41,24 @@
         </ul>
       </li>
       <li class="dropdown">
-          <a href="planeacionrecursos.html">Recursos Planeados<i class="fas fa-caret-down"></i></a>
+          <a href="planeacionrecursos.html">Recursos Planeados <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
           <ul class="submenu">
             <li><a href="planeacionrecursos.html#materiales">Recursos Materiales</a></li>
             <li><a href="planeacionrecursos.html#humanos">Recursos Humanos</a></li>
             <li><a href="planeacionrecursos.html#tecnologicos">Recursos Tecnológicos</a></li>
             <li><a href="planeacionrecursos.html#financieros">Recursos Financieros</a></li>
           </ul>
-        </li>
-      <li><a href="#servicios">Nuestros servicios</a></li>
+      </li>
+      <li class="dropdown">
+        <a href="nuestrosservicios.html">Nuestros servicios <i class="fas fa-caret-down dropdown-toggle-arrow"></i></a>
+        <ul class="submenu">
+          <li><a href="nuestrosservicios.html#venta">Venta de productos</a></li>
+        </ul>
+      </li>
     </ul>
   </nav>
 </div>
 
-  <!-- Banner principal -->
 <header class="banner-principal">
   <div class="banner-contenido">
     <div class="banner-imagen">
@@ -67,78 +70,91 @@
   </div>
 </header>
 
-  <!-- Secciones en tarjetas -->
-  <section id="info-corporativa" class="carousel-container">
-    <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
-    <div class="carousel">
-      <!-- Slide 1 -->
-      <div class="card slide active">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Misión</h2>
-            <p>Garantizar el bienestar interplanetario a través del Impulso al desarrollo tecnológico por medio de la redistribución de recursos de manera efectiva gracias a la miniaturización de recursos.</p>
-
-          </div>
-        </div>
+<section id="info-corporativa" class="carousel-container mvv">
+  <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Anterior">‹</button>
+  <div class="carousel">
+    <!-- Misión -->
+<div class="card slide active">
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-hero">
+        <!-- Si no tienes esta imagen aún, déjala y luego súbela a /imagenes/mision.jpg -->
       </div>
-
-      <!-- Slide 2 -->
-      <div class="card slide">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Visión</h2>
-            <p>Ser el referente en control de miniaturizacion de la materia y transporte intergalactico.</p>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="card slide">
-        <div class="card-inner">
-          <div class="card-front">
-            <h2>Valores</h2>
-            <ul>
-              <li>Innovación científica</li>
-              <li>Responsabilidad universal</li>
-              <li>Exploración e investigación</li>
-              <li>Equidad interplanetaria</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <h2>Misión</h2>
+      <p>
+        Impulsar el bienestar interplanetario mediante tecnología de
+        <strong>miniaturización</strong> que optimiza la distribución de recursos,
+        acercando soluciones <strong>seguras</strong>, <strong>accesibles</strong> y
+        <strong>sostenibles</strong> a cada comunidad.
+      </p>
     </div>
-    <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
-  </section>
-  <!-- Información de nosotros -->
+  </div>
+</div>
+
+<!-- Visión -->
+<div class="card slide">
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-hero">
+        <!-- Sube /imagenes/vision.jpg si aún no existe -->
+      </div>
+      <h2>Visión</h2>
+      <p>
+        Ser la corporación de referencia en <strong>miniaturización de la materia</strong> y
+        <strong>transporte intergaláctico</strong>, expandiendo la frontera humana con
+        <strong>innovación ética</strong>, <strong>eficiencia</strong> y <strong>cero residuos</strong>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Valores -->
+<div class="card slide">
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-hero">
+        <!-- Sube /imagenes/valores.jpg si aún no existe -->
+
+      </div>
+      <h2>Valores</h2>
+      <ul>
+        <li><strong>Innovación científica:</strong> creamos, probamos y mejoramos con rigor.</li>
+        <li><strong>Responsabilidad universal:</strong> decisiones con impacto más allá del planeta.</li>
+        <li><strong>Exploración e investigación:</strong> curiosidad con método y propósito.</li>
+        <li><strong>Equidad interplanetaria:</strong> acceso justo a la tecnología para todos.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <button id="nextBtn" class="carousel-btn next-btn" aria-label="Siguiente">›</button>
+</section>
+
 <section id="informacion-nosotros" style="text-align: center; padding: 3rem 1rem;">
   <h2 style="color: #000000; font-family: 'Orbitron', sans-serif;">Información de nosotros</h2>
   <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem;">
-    <!-- Imagen de organigrama -->
     <div style="max-width: 400px;">
       <img src="imagenes/organigrama.png" alt="Organigrama Corporativo" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" loading="lazy">
     </div>
-    <!-- Imagen de uniforme -->
     <div style="max-width: 400px;">
       <img src="imagenes/uniforme.png" alt="Uniforme Corporativo" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);" loading="lazy">
     </div>
   </div>
 </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="social-links">
-      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-    </div>
-    <p>© 2025 Corporación Cápsula. Todos los derechos reservados.</p>
-  </footer>
+<footer class="footer">
+  <div class="social-links">
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p>© 2025 Corporación Cápsula. Todos los derechos reservados.</p>
+</footer>
 
-  <script src="js/carrusel.js"></script>
-  <script src="js/menu_movil.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="js/carrusel.js"></script>
+<script src="js/menu_movil.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
